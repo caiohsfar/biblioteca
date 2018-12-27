@@ -1,5 +1,5 @@
 <?php
-    require_once('../dominio/UsuarioDAO.php');
+    require_once('../classes/UsuarioDAO.php');
     $numero = $_POST['numero'];
     echo($numero);
 
