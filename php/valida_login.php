@@ -6,8 +6,6 @@
     $senha = $_POST['senha'];
     
 
-    // tipo-conta: 1=aluno, 2=professor, 3=funcionario
-
     $sql_aluno = "SELECT * FROM usuario NATURAL JOIN aluno
     WHERE email = '$email' AND senha = '$senha'";
 
@@ -24,6 +22,8 @@
 
     $tipo_conta = $_POST['tipo_conta'];
     $resultado = null;
+    
+    // tipo-conta: 1=aluno, 2=professor, 3=funcionario
     switch($tipo_conta) {
         case '1':
             $resultado = mysqli_query($link, $sql_aluno);
@@ -46,15 +46,18 @@
             if (isset($dados_usuario['matricula'])){
                 $_SESSION['matricula'] = $dados_usuario['matricula'];
                 $_SESSION['curso'] = $dados_usuario['curso'];
+                header('Location: ../views/home_cliente.php');
             //professor
             }else if (isset($dados_usuario['lates'])){
                 $_SESSION['lates'] = $dados_usuario['lates'];
                 $_SESSION['siape'] = $dados_usuario['siape'];
+                header('Location: ../views/home_cliente.php');
             //funcionario
             }else{
                 $_SESSION['siape'] = $dados_usuario['siape'];
+                header('Location: ../views/home_funcionario.php');
             }
-            header('Location: home.php');
+    
         }else {
             header('Location: ../views/index.php?erro=1');
         }

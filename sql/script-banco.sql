@@ -331,3 +331,12 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+/*popular o banco*/
+insert into usuario(id_usuario, nome, email, senha,endereco) 
+values ('1','caio', 'caio@gmail.com','213','recife');
+
+insert into aluno(id_usuario, matricula, curso) values ('1', '3123123', 'bsi');
+
+insert into professor(id_usuario, siape, lates) values ('1', '21323', 'ashuashuas');
