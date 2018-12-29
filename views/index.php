@@ -1,3 +1,8 @@
+<?php
+
+  $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+  
+?>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -5,8 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style type="text/css">
+       
     </style>
-
+     
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <!-- Bootstrap CSS -->
@@ -46,20 +52,35 @@
           </ul>
 
           <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-                <li class="dropdown order-1">
-                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
-                    <ul class="dropdown-menu dropdown-menu-right mt-2">
+                <li class="dropdown order-1 <?= $erro == 1 ? 'show' : '' ?>">
+                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle" >Login <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right mt-2 <?= $erro == 1 ? 'show' : '' ?>">
                        <li class="px-3 py-2">
-                           <form class="form" role="form">
+                           <form class="form" role="form" method="post" action="../php/valida_login.php">
                                 <div class="form-group">
-                                    <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="Preencha o campo de email">
+                                    <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="Preencha o campo de email" name="email">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="Preencha o campo de senha">
+                                    <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="Preencha o campo de senha" name="senha">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                  <select class="custom-select" id="tipoConta" name="tipo_conta">
+                                    <option selected value="">Tipo</option>
+                                    <option value="1">Aluno</option>
+                                    <option value="2">Professor</option>
+                                    <option value="3">Funcionário</option>
+                                  </select>
                                 </div>
+                              
+                                <div class="form-group">
+                                    <button id="btn_logar" type="submit" class="btn btn-primary btn-block">Login</button>
+                                </div>
+
+                                <?php
+                                  if($erro == 1){
+                                    echo '<font color="#FF0000">Usuário e ou senha inválido(s)</font>';
+                                  }
+                                ?>
                                 
                             </form>
                         </li>
