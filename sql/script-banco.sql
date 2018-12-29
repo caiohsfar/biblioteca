@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`usuario` (
   `endereco` VARCHAR(45) NULL,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `tipo_conta` CHAR(1) NOT NULL,
   PRIMARY KEY (`id_usuario`))
 ENGINE = InnoDB;
 
@@ -33,8 +32,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`aluno` (
   `id_usuario` INT NOT NULL,
-  `curso` VARCHAR(45) NULL,
-  `matricula` VARCHAR(45) NULL,
+  `curso` VARCHAR(45) NOT NULL,
+  `matricula` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   INDEX `fk_aluno_usuario1_idx` (`id_usuario` ASC),
   CONSTRAINT `fk_aluno_usuario1`
@@ -83,7 +82,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`telefone_usuario` (
   `id_telefone` INT NOT NULL,
-  `numero` VARCHAR(45) NULL,
+  `numero` VARCHAR(45) NOT NULL,
   `id_usuario` INT NOT NULL,
   PRIMARY KEY (`id_telefone`),
   INDEX `fk_telefone_usuario_usuario1_idx` (`id_usuario` ASC),
@@ -112,7 +111,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `biblioteca`.`funcionario/cargo` (
   `id_cargo` INT NOT NULL,
   `id_funcionario` INT NOT NULL,
-  `data` DATE NULL,
+  `data` DATE NOT NULL,
   PRIMARY KEY (`id_cargo`, `id_funcionario`),
   INDEX `fk_table2_cargo1_idx` (`id_cargo` ASC),
   INDEX `fk_table2_funcionario1_idx` (`id_funcionario` ASC),
@@ -206,7 +205,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `biblioteca`.`editora` (
   `id_editora` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
-  `endereco` VARCHAR(45) NULL,
+  `endereco` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_editora`))
 ENGINE = InnoDB;
 
@@ -255,7 +254,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `biblioteca`.`autor` (
   `id_autor` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
-  `endereco` VARCHAR(45) NULL,
+  `endereco` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_autor`))
 ENGINE = InnoDB;
 
@@ -312,7 +311,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`livro/palavra`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`livro/palavra` (
-  `isbn_livro` INT NULL,
+  `isbn_livro` INT NOT NULL,
   `id_palavra` INT NOT NULL,
   INDEX `fk_livro/palavra_titulo_livro1_idx` (`isbn_livro` ASC),
   INDEX `fk_livro/palavra_palavra_chave1_idx` (`id_palavra` ASC),
