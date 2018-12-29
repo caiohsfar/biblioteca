@@ -7,6 +7,7 @@ class Db{
 	private $senha ="";
 	private $database ="biblioteca";
 
+
 	public function getHost(){
 		return $this->host;
 	}
