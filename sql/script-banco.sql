@@ -18,11 +18,12 @@ USE `biblioteca` ;
 -- Table `biblioteca`.`usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`usuario` (
-  `id_usuario` INT NOT NULL,
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `endereco` VARCHAR(45) NULL,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
+  `tipo_conta` CHAR(1) NOT NULL,
   PRIMARY KEY (`id_usuario`))
 ENGINE = InnoDB;
 
@@ -32,8 +33,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`aluno` (
   `id_usuario` INT NOT NULL,
-  `curso` VARCHAR(45) NOT NULL,
-  `matricula` VARCHAR(45) NOT NULL,
+  `curso` VARCHAR(45) NULL,
+  `matricula` VARCHAR(45) NULL,
   PRIMARY KEY (`id_usuario`),
   INDEX `fk_aluno_usuario1_idx` (`id_usuario` ASC),
   CONSTRAINT `fk_aluno_usuario1`
@@ -81,8 +82,8 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`telefone_usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`telefone_usuario` (
-  `id_telefone` INT NOT NULL,
-  `numero` VARCHAR(45) NOT NULL,
+  `id_telefone` INT NOT NULL AUTO_INCREMENT,
+  `numero` VARCHAR(45) NULL,
   `id_usuario` INT NOT NULL,
   PRIMARY KEY (`id_telefone`),
   INDEX `fk_telefone_usuario_usuario1_idx` (`id_usuario` ASC),
@@ -98,7 +99,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`cargo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`cargo` (
-  `id_cargo` INT NOT NULL,
+  `id_cargo` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_cargo`))
@@ -111,7 +112,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `biblioteca`.`funcionario/cargo` (
   `id_cargo` INT NOT NULL,
   `id_funcionario` INT NOT NULL,
-  `data` DATE NOT NULL,
+  `data` DATE NULL,
   PRIMARY KEY (`id_cargo`, `id_funcionario`),
   INDEX `fk_table2_cargo1_idx` (`id_cargo` ASC),
   INDEX `fk_table2_funcionario1_idx` (`id_funcionario` ASC),
@@ -132,7 +133,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`area_conhecimento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`area_conhecimento` (
-  `id_area` INT NOT NULL,
+  `id_area` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_area`))
@@ -143,7 +144,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`titulo_livro`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`titulo_livro` (
-  `isbn` INT NOT NULL,
+  `isbn` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `edicao` VARCHAR(45) NOT NULL,
   `volume` VARCHAR(45) NOT NULL,
@@ -162,7 +163,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`exemplar_livro`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`exemplar_livro` (
-  `id_exemplar` INT NOT NULL,
+  `id_exemplar` INT NOT NULL AUTO_INCREMENT,
   `qtd_exemplares` INT NOT NULL,
   `isbn_livro` INT NOT NULL,
   PRIMARY KEY (`id_exemplar`),
@@ -203,9 +204,9 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`editora`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`editora` (
-  `id_editora` INT NOT NULL,
+  `id_editora` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `endereco` VARCHAR(45) NOT NULL,
+  `endereco` VARCHAR(45) NULL,
   PRIMARY KEY (`id_editora`))
 ENGINE = InnoDB;
 
@@ -214,7 +215,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`telefone_editora`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`telefone_editora` (
-  `id_telefone` INT NOT NULL,
+  `id_telefone` INT NOT NULL AUTO_INCREMENT,
   `numero` VARCHAR(45) NOT NULL,
   `id_editora` INT NOT NULL,
   PRIMARY KEY (`id_telefone`, `id_editora`),
@@ -252,9 +253,9 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`autor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`autor` (
-  `id_autor` INT NOT NULL,
+  `id_autor` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `endereco` VARCHAR(45) NOT NULL,
+  `endereco` VARCHAR(45) NULL,
   PRIMARY KEY (`id_autor`))
 ENGINE = InnoDB;
 
@@ -263,7 +264,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`telefone_autor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`telefone_autor` (
-  `id_telefone` INT NOT NULL,
+  `id_telefone` INT NOT NULL AUTO_INCREMENT,
   `numero` VARCHAR(45) NOT NULL,
   `id_autor` INT NOT NULL,
   PRIMARY KEY (`id_telefone`),
@@ -301,7 +302,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`palavra_chave`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`palavra_chave` (
-  `id_palavra` INT NOT NULL,
+  `id_palavra` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_palavra`))
 ENGINE = InnoDB;
@@ -311,7 +312,7 @@ ENGINE = InnoDB;
 -- Table `biblioteca`.`livro/palavra`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `biblioteca`.`livro/palavra` (
-  `isbn_livro` INT NOT NULL,
+  `isbn_livro` INT NULL,
   `id_palavra` INT NOT NULL,
   INDEX `fk_livro/palavra_titulo_livro1_idx` (`isbn_livro` ASC),
   INDEX `fk_livro/palavra_palavra_chave1_idx` (`id_palavra` ASC),
@@ -332,10 +333,6 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
-/*popular o banco*/
-insert into usuario(id_usuario, nome, email, senha,endereco) 
-values ('1','caio', 'caio@gmail.com','213','recife');
 
 insert into aluno(id_usuario, matricula, curso) values ('1', '3123123', 'bsi');
 
