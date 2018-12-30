@@ -102,7 +102,12 @@
         Cadastre-se
       </button>
 
-  <!-- Modal -->
+
+
+
+  <!-- Modal de cadastro de usuário-->
+
+
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -114,51 +119,85 @@
           </div>
           <div class="modal-body">
             <form>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="exemplo@email.com">
-                <small id="email" class="form-text text-muted">Esse email pode ser utilizado para criar outro tipo de conta futuramente.</small>
-              </div>
 
-              <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="password" class="form-control" id="senha" placeholder="Senha">
-              </div>
-
-
-              <span>Escolha seu tipo de conta<span>
+              <strong>Escolha seu perfil</strong>
                 <br/>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipoConta" id="tipoConta1" value="1" checked>
-                <label class="form-check-label" for="Radio1">
-                  Aluno
-                </label>
+                <input class="form-check-input" type="radio" name="tipoConta" id="tipoConta1" value="aluno">
+                <label class="form-check-label" for="Radio1"><strong>Aluno</strong></label>
               </div>
+
+
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="tipoConta" id="tipoConta2" value="2">
+              <input  class="form-check-input" type="radio" name="tipoConta" id="tipoConta2" value="professor">
               <label class="form-check-label" for="Radio2">
-                Professor
+                <strong>Professor</strong>
               </label>
             </div>
 
+
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="tipoConta" id="tipoConta3" value="3">
+              <input class="form-check-input" type="radio" name="tipoConta" id="tipoConta3" value="funcionario">
               <label class="form-check-label" for="Radio3">
-                Funcionário
+                <strong>Funcionário</strong>
               </label>
             </div>
+
+            <div class="form-group">
+                <label for="siape" id="labelSiape"><strong>Siape</strong></label>
+                <input type="text" class="form-control" id="siape" aria-describedby="siape" placeholder="exemplo123">
+            
+            </div>
+
+            <div class="form-group">
+                <label for="lates" id="labelLates"><strong>Lates</strong></label>
+                <input type="text" class="form-control" id="lates" aria-describedby="lates" placeholder="exemplo123">
+            
+            </div>
+
+            <div class="form-group">
+                <label for="matricula" id="labelMatricula"><strong>Matrícula</strong></label>
+                <input type="text" class="form-control" id="matricula" aria-describedby="matricula" placeholder="exemplo123">
+            
+              </div>
+
+            <div class="form-group">
+                <label for="curso" id="labelCurso"><strong>Curso</strong></label>
+                <input type="text" class="form-control" id="curso" aria-describedby="curso" placeholder="curso">
+            
+            </div>
+
+
+              <div class="form-group">
+                <label for="nome"><strong>Nome</strong></label>
+                <input type="text" class="form-control" id="nomeCadastro" aria-describedby="nome" placeholder="exemplo123">
+            
+              </div>
+
+              <div class="form-group">
+                <label for="endereco"><strong>Endereço</strong></label>
+                <textarea class="form-control" id="enderecoCadastro" placeholder="Rua exemplo, Pernambuco , recife, Número 8" rows="3"></textarea>
+
+              </div>
+              <div class="form-group">
+                <label for="email"><strong>Email</strong></label>
+                <input type="email" class="form-control" id="emailCadastro" aria-describedby="email" placeholder="exemplo@email.com">
+                <small id="emailFrase" class="form-text text-muted">Se você deseja criar mais um perfil, logue em um deles e crie lá.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="senha"><strong>Senha</strong></label>
+                <input type="password" class="form-control" id="senhaCadastro" placeholder="Senha">
+              </div>
+
+
 
           </form>
 
-
-
-
-
-
           </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Cadastrar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-success" id="cadastrar">Cadastrar</button>
               </div>
             </div>
           </div>
