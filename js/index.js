@@ -1,8 +1,7 @@
 $(document).ready(function(){
-            inserirTelefone();
+            mostrarCampoRadio();
             clickLogin();
             cadastrarUsuario();
-            mostrarCampoRadio();
 
         });
         
@@ -50,10 +49,76 @@ $(document).ready(function(){
 
             if(campo_vazio) return false;
         }
+function esconderAlertas(){
+    $('#alertSiape').hide();
+            $('#alertCurso').hide();
+            $('#alertLates').hide();
+            $('#alertNome').hide();
+            $('#alertEmail').hide();
+            $('#alertSenha').hide();
+            $('#alertEndereco').hide();
+            $('#alertMatricula').hide();
+            $('#alertUsuarioExiste').hide();
+            $('#alertSucessoCadastro').hide();
+}
+        function validaCamposCadastro(){
+            var validacao = true;
+            var tipoContaValidacao = getRadioValor('tipoConta');
+            if($('#nomeCadastro').val().trim() ==""){
+                $('#alertNome').show();
+                validacao =  false;
+            }
 
+            if($('#emailCadastro').val().trim() ==""){
+                $('#alertEmail').show();
+                validacao = false;
+            }
+
+            if($('#enderecoCadastro').val().trim() ==""){
+                $('#alertEndereco').show();
+                validacao = false;
+            }
+
+            if($('#senhaCadastro').val().trim() ==""){
+                $('#alertSenha').show();
+                validacao = false;
+            }
+
+
+            if(tipoContaValidacao =="aluno"){
+                if($('#matricula').val().trim() ==""){
+                    $('#alertMatricula').show();
+                    validacao = false;
+                    }
+                if($('#curso').val().trim() ==""){
+                    $('#alertCurso').show();
+                    validacao = false;
+                }
+            }
+
+            if(tipoContaValidacao =="professor"){
+                if($('#lates').val().trim() ==""){
+                    $('#alertLates').show();
+                    validacao = false;
+                    }
+                if($('#siape').val().trim() ==""){
+                    $('#alertSiape').show();
+                }
+            }
+
+            if(tipoContaValidacao =="funcionario"){
+                if($('#siape').val().trim() ==""){
+                    $('#alertLates').show();
+                     validacao = false;
+                    }
+            }
+
+            return validacao;
+        }
 
         function cadastrarUsuario(){
             $('#cadastrar').click(function(){
+                if(validaCamposCadastro()){
                 var nome = $('#nomeCadastro').val();
                 var email = $('#emailCadastro').val();
                 var endereco = $('#enderecoCadastro').val();
@@ -89,9 +154,21 @@ $(document).ready(function(){
                     method: 'post',
                     data: {nome:nome, email:email, endereco: endereco, senha:senha,siape:siape, matricula:matricula, curso:curso, tipoConta:tipoConta,lates:lates},
                     success: function(data){
-                        alert(data);
+                            if(data==false){
+                                esconderAlertas();
+                                $('#alertUsuarioExiste').show();
+                            }
+                            else{
+                                esconderAlertas();
+                                $('#alertSucessoCadastro').show();
+                            }
+                        
                 }
           });
+            }
+            else{
+                alert('Preencha todos os campos');
+            }
             });
         }
 
@@ -136,8 +213,8 @@ $(document).ready(function(){
                     $('#labelMatricula').hide();
                     $('#curso').hide();
                     $('#labelCurso').hide();
-                    $('#lates').hide();
-                    $('#labelLates').hide();
+                    $('#lates').show();
+                    $('#labelLates').show();
                    }
 
                    else if ( this.value =="funcionario" ) {
@@ -147,8 +224,8 @@ $(document).ready(function(){
                     $('#labelMatricula').hide();
                     $('#curso').hide();
                     $('#labelCurso').hide();
-                    $('#lates').show();
-                    $('#labelLates').show();
+                    $('#lates').hide();
+                    $('#labelLates').hide();
                    }
                 }
 

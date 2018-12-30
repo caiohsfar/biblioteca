@@ -34,6 +34,26 @@ class UsuarioDAO{
 			}
 		}
 
+		function UsuarioExiste($email){
+			$usuario = new Usuario();
+			$db = new Db();
+			$link = $db->conecta_mysql();	
+			$sql = "SELECT * FROM usuario WHERE email = '$email'";
+			$resultado_busca = mysqli_query($link,$sql);
+
+			if($resultado_busca){
+				$dados_usuario =mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+				if($dados_usuario['id_usuario']!=""){
+					return false;
+				}
+
+				return true;
+				
+
+			}
+			
+		}
+
 		function inserirFuncionario($funcionario){
 			$db = new Db();
 			$link = $db->conecta_mysql();	

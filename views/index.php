@@ -98,7 +98,7 @@
     <div class="margem-navbar">
       <h4>Ainda não é cadastrado?</h4>
 
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" onclick="esconderAlertas()">
         Cadastre-se
       </button>
 
@@ -123,13 +123,13 @@
               <strong>Escolha seu perfil</strong>
                 <br/>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipoConta" id="tipoConta1" value="aluno">
+                <input class="form-check-input" type="radio" name="tipoConta"  value="aluno">
                 <label class="form-check-label" for="Radio1"><strong>Aluno</strong></label>
               </div>
 
 
             <div class="form-check">
-              <input  class="form-check-input" type="radio" name="tipoConta" id="tipoConta2" value="professor">
+              <input  class="form-check-input" type="radio" name="tipoConta"  value="professor">
               <label class="form-check-label" for="Radio2">
                 <strong>Professor</strong>
               </label>
@@ -137,7 +137,7 @@
 
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="tipoConta" id="tipoConta3" value="funcionario">
+              <input class="form-check-input" type="radio" name="tipoConta"  value="funcionario">
               <label class="form-check-label" for="Radio3">
                 <strong>Funcionário</strong>
               </label>
@@ -149,17 +149,32 @@
             
             </div>
 
+            <div class="alert alert-danger" role="alert" id="alertSiape">
+                Preencha o <a href="#" class="alert-link">siape</a>.
+            </div>
+
+
             <div class="form-group">
                 <label for="lates" id="labelLates"><strong>Lates</strong></label>
                 <input type="text" class="form-control" id="lates" aria-describedby="lates" placeholder="exemplo123">
             
             </div>
 
+            <div class="alert alert-danger" role="alert" id="alertLates">
+              Preencha o <a href="#" class="alert-link">lates</a>.
+            </div>
+
+
             <div class="form-group">
                 <label for="matricula" id="labelMatricula"><strong>Matrícula</strong></label>
                 <input type="text" class="form-control" id="matricula" aria-describedby="matricula" placeholder="exemplo123">
             
-              </div>
+            </div>
+
+            <div class="alert alert-danger" role="alert" id="alertMatricula">
+                Preencha a <a href="#" class="alert-link">matrícula</a>.
+            </div>
+
 
             <div class="form-group">
                 <label for="curso" id="labelCurso"><strong>Curso</strong></label>
@@ -167,27 +182,59 @@
             
             </div>
 
+            <div class="alert alert-danger" role="alert" id="alertCurso">
+                Preencha o <a href="#" class="alert-link">curso</a>.
+              </div>
+
+
 
               <div class="form-group">
                 <label for="nome"><strong>Nome</strong></label>
-                <input type="text" class="form-control" id="nomeCadastro" aria-describedby="nome" placeholder="exemplo123">
+                <input type="text" class="form-control" id="nomeCadastro"  required="o campo nome precisa ser preenchido" aria-describedby="nome" placeholder="exemplo123">
             
               </div>
 
+              <div class="alert alert-danger" role="alert" id="alertNome">
+                Preencha o <a href="#" class="alert-link">nome</a>.
+              </div>
+
+
               <div class="form-group">
                 <label for="endereco"><strong>Endereço</strong></label>
-                <textarea class="form-control" id="enderecoCadastro" placeholder="Rua exemplo, Pernambuco , recife, Número 8" rows="3"></textarea>
+                <textarea class="form-control" id="enderecoCadastro" required="O campo Endereço precisa ser preenchido" placeholder="Rua exemplo, Pernambuco , recife, Número 8" rows="3"></textarea>
 
               </div>
+
+              <div class="alert alert-danger" role="alert" id="alertEndereco">
+                Preencha o <a href="#" class="alert-link">endereço</a>.
+              </div>
+
               <div class="form-group">
                 <label for="email"><strong>Email</strong></label>
-                <input type="email" class="form-control" id="emailCadastro" aria-describedby="email" placeholder="exemplo@email.com">
+                <input type="email" class="form-control" id="emailCadastro" aria-describedby="email" required="O campo email precisa ser preenchido corretamente." placeholder="exemplo@email.com">
                 <small id="emailFrase" class="form-text text-muted">Se você deseja criar mais um perfil, logue em um deles e crie lá.</small>
               </div>
 
+              <div class="alert alert-danger" role="alert" id="alertEmail">
+                Preencha o <a href="#" class="alert-link">email</a>.
+              </div>
+
+
               <div class="form-group">
                 <label for="senha"><strong>Senha</strong></label>
-                <input type="password" class="form-control" id="senhaCadastro" placeholder="Senha">
+                <input type="password" class="form-control" id="senhaCadastro" required="O campo senha percisa ser preenchido." placeholder="Senha">
+              </div>
+
+              <div class="alert alert-danger" role="alert" id="alertSenha">
+                Preencha a <a href="#" class="alert-link">senha</a>.
+              </div>
+
+              <div class="alert alert-danger" role="alert" id="alertUsuarioExiste">
+                Já existe um <a href="#" class="alert-link">usuário</a> com esse email, logue e adicione outro tipo de  perfil a sua conta.
+              </div>
+
+              <div class="alert alert-success" role="alert" id="alertSucessoCadastro">
+                Usuário e perfil cadastrados com sucesso!!!
               </div>
 
 
@@ -197,7 +244,7 @@
           </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-success" id="cadastrar">Cadastrar</button>
+                <button type="submit" class="btn btn-success" id="cadastrar">Cadastrar</button>
               </div>
             </div>
           </div>
