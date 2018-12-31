@@ -189,13 +189,14 @@ function esconderAlertas(){
         var radios = document.querySelectorAll('input[type=radio][name="tipoConta"]');
             $('#siape').hide();
             $('#labelSiape').hide();
-            $('#matricula').hide();
-            $('#labelMatricula').hide();
-            $('#curso').hide();
-            $('#labelCurso').hide();
+            //$('#matricula').hide();
+            //$('#labelMatricula').hide();
+            //$('#curso').hide();
+            //$('#labelCurso').hide();
             $('#lates').hide();
             $('#labelLates').hide();
                 function changeHandler(event) {
+                    esconderAlertas();
                    if ( this.value =="aluno") {
                     $('#labelSiape').hide();
                     $('#siape').hide();
@@ -231,7 +232,9 @@ function esconderAlertas(){
 
                 Array.prototype.forEach.call(radios, function(radio) {
                    radio.addEventListener('change', changeHandler);
+                   $("#radioAluno").prop("checked", true);
                 });
+
     }
 
    

@@ -123,7 +123,7 @@
               <strong>Escolha seu perfil</strong>
                 <br/>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipoConta"  value="aluno">
+                <input id="radioAluno" class="form-check-input" type="radio" name="tipoConta"  value="aluno">
                 <label class="form-check-label" for="Radio1"><strong>Aluno</strong></label>
               </div>
 
