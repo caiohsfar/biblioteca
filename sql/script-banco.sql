@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`usuario` (
   `endereco` VARCHAR(45) NULL,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `tipo_conta` CHAR(1) NOT NULL,
   PRIMARY KEY (`id_usuario`))
 ENGINE = InnoDB;
 
