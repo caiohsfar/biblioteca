@@ -1,5 +1,8 @@
 <?php
-  $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+  session_start();
+  if (!isset($_SESSION['usuario'])){
+    header('Location: index.php?erro=1');
+  }
 
   
 ?>
@@ -51,12 +54,16 @@
 
         <div class="collapse navbar-collapse" id="biblioteca">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"> <a class="nav-link" href="index.php">Meu Usuário</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="disciplinas.php">Disciplinas</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="matriculas.php">Matriculas</a> </li>
-
-          </ul>      
+            <li class="nav-item"> <a class="nav-link" href="home_funcionario.php">Início</a> </li>           
+            <li class="nav-item"> <a class="nav-link" href="livros.php">Livros</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="autores.php">Autores</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="editoras.php">Editoras</a> </li>          
+          </ul>    
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="sair.php">Sair</a>
+          </div>  
         </div>
+      
 
 
         
