@@ -5,6 +5,7 @@ require_once('Database.class.php');
 require_once('Usuario.class.php');
 require_once('Aluno.class.php');
 require_once('Funcionario.class.php');
+require_once('Professor.class.php');
 
 
 class UsuarioDAO{
@@ -103,5 +104,85 @@ class UsuarioDAO{
 			}
 			
 		}
+
+	function atualizarUsuario($usuario){
+			$db = new Db();
+			$link = $db->conecta_mysql();
+			$sql = "UPDATE usuario SET nome = '".$usuario->getNome()."' 
+			, endereco = '".$usuario->getEndereco()."' 
+			, email = '".$usuario->getEmail()."' 
+			, senha =  '".$usuario->getSenha()."' 
+			WHERE id_usuario = '".$usuario->getId()."' ";
+			if (mysqli_query($link,$sql)) {
+				echo 'Inserido com sucesso';
+			}
+			else{
+				echo 'Erro no bando de dados';
+			}
+
+		}
+
+	function atualizarFuncionario($funcionario){
+			$db = new Db();
+			$link = $db->conecta_mysql();
+			$sql = "UPDATE funcionario SET siape = '".$funcionario->getSiape()."' 	 
+			WHERE id_usuario = '".$funcionario->getIdUsuario()."' ";
+			if (mysqli_query($link,$sql)) {
+				echo 'Inserido com sucesso';
+			}
+			else{
+				echo 'Erro no bando de dados';
+			}
+
+		}
+	function atualizarAluno($aluno){
+			$db = new Db();
+			$link = $db->conecta_mysql();
+			$sql = "UPDATE aluno SET matricula = '".$aluno->getMatricula()."',curso = '".$aluno->getCurso()."'   	 
+			WHERE id_usuario = '".$aluno->getIdUsuario()."' ";
+			if (mysqli_query($link,$sql)) {
+				echo 'Inserido com sucesso';
+			}
+			else{
+				echo 'Erro no bando de dados';
+			}
+
+		}
+
+	function atualizarProfessor($professor){
+			$db = new Db();
+			$link = $db->conecta_mysql();
+			$sql = "UPDATE professor SET siape = '".$professor->getSiape()."',lates = '".$professor->getLates()."'   	 
+			WHERE id_usuario = '".$professor->getIdUsuario()."' ";
+			if (mysqli_query($link,$sql)) {
+				echo 'Inserido com sucesso';
+			}
+			else{
+				echo 'Erro no bando de dados';
+			}
+
+		}
+			
+	function excluirFuncionario($id){
+			$db = new Db();
+			$link = $db->conecta_mysql();
+			$sql = "DELETE FROM funcionario WHERE id_usuario = '$id' ";
+			mysqli_query($link,$sql);
+		}
+
+	function excluirProfessor($id){
+			$db = new Db();
+			$link = $db->conecta_mysql();
+			$sql = "DELETE FROM professor WHERE id_usuario = '$id' ";
+			mysqli_query($link,$sql);
+		}
+
+	function excluirAluno($id){
+			$db = new Db();
+			$link = $db->conecta_mysql();
+			$sql = "DELETE FROM aluno WHERE id_usuario = '$id' ";
+			mysqli_query($link,$sql);
+		}
+
 	}
 ?>

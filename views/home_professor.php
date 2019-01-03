@@ -34,7 +34,7 @@
     <title>Funcionários</title>
 
     
-    <script src="../js/aluno.js">
+    <script src="../js/professor.js">
 
     </script>
 
@@ -126,14 +126,14 @@
 
 
             <div class="form-group">
-                <label for="siape" id="labelSiape"><strong>Curso</strong></label>
-                <input type="text" class="form-control" id="cursoEdit" aria-describedby="siape" placeholder="exemplo123">
+                <label for="siape" id="labelSiape"><strong>Siape</strong></label>
+                <input type="text" class="form-control" id="siapeEdit" aria-describedby="siape" placeholder="exemplo123">
             
             </div>
 
             <div class="form-group">
-                <label for="siape" id="labelSiape"><strong>Matrícula</strong></label>
-                <input type="text" class="form-control" id="matriculaEdit" aria-describedby="siape" placeholder="exemplo123">
+                <label for="siape" id="labelSiape"><strong>Lates</strong></label>
+                <input type="text" class="form-control" id="latesEdit" aria-describedby="lates" placeholder="exemplo123">
             
             </div>
 

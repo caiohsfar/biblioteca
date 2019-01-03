@@ -1,6 +1,12 @@
 <?php
     require_once('../classes/Database.class.php');
+    require_once('../classes/Usuario.class.php');
+    require_once('../classes/Funcionario.class.php');
+    require_once('../classes/Aluno.class.php');
+    require_once('../classes/Professor.class.php');
     session_start();
+    //gambiarra enquanto não existe o botao de deslogar
+    session_unset($_SESSION);
 
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -39,22 +45,35 @@
         $dados_usuario = mysqli_fetch_array($resultado);
         //inserindo dados do usuario na sessão
         if(isset($dados_usuario['email'])){
-            $_SESSION['email'] = $dados_usuario['email'];
-            $_SESSION['nome'] = $dados_usuario['nome'];
-            $_SESSION['endereco'] = $dados_usuario['endereco'];
+            $usuario = new Usuario();
+            $usuario->setEmail($dados_usuario['email']);
+            $usuario->setNome($dados_usuario['nome']);
+            $usuario->setEndereco($dados_usuario['endereco']);
+            $usuario->setId($dados_usuario['id_usuario']);
+            $usuario->setSenha($dados_usuario['senha']);
+            $_SESSION['usuario'] = serialize($usuario);
             //aluno
             if (isset($dados_usuario['matricula'])){
-                $_SESSION['matricula'] = $dados_usuario['matricula'];
-                $_SESSION['curso'] = $dados_usuario['curso'];
+                $aluno = new Aluno();
+                $aluno->setCurso($dados_usuario['curso']);
+                $aluno->setMatricula($dados_usuario['matricula']);
+                $aluno->setIdUsuario($dados_usuario['id_usuario']);
+                $_SESSION['aluno'] = serialize($aluno);
                 header('Location: ../views/home_cliente.php');
             //professor
             }else if (isset($dados_usuario['lates'])){
-                $_SESSION['lates'] = $dados_usuario['lates'];
-                $_SESSION['siape'] = $dados_usuario['siape'];
-                header('Location: ../views/home_cliente.php');
+                $professor = new Professor();
+                $professor->setLates($dados_usuario['lates']);
+                $professor->setSiape($dados_usuario['siape']);
+                $professor->setIdUsuario($dados_usuario['id_usuario']);
+                $_SESSION['professor'] = serialize($professor);
+                header('Location: ../views/home_professor.php');
             //funcionario
             }else{
-                $_SESSION['siape'] = $dados_usuario['siape'];
+                $funcionario = new Funcionario();
+                $funcionario->setSiape($dados_usuario['siape']);
+                $funcionario->setIdUsuario($dados_usuario['id_usuario']);
+                $_SESSION['funcionario'] = serialize($funcionario);
                 header('Location: ../views/home_funcionario.php');
             }
     
