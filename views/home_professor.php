@@ -54,10 +54,8 @@
 
         <div class="collapse navbar-collapse" id="biblioteca">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"> <a class="nav-link" href="home_funcionario.php">Início</a> </li>           
-            <li class="nav-item"> <a class="nav-link" href="livros.php">Livros</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="autores.php">Autores</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="editoras.php">Editoras</a> </li>          
+            <li class="nav-item"> <a class="nav-link" href="home_cliente.php">Início</a> </li>           
+            <li class="nav-item"> <a class="nav-link" href="livros_cliente.php">Livros</a> </li>        
           </ul>    
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="sair.php">Sair</a>

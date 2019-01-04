@@ -19,6 +19,9 @@
      
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js%22%3E"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js%22%3E"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -40,6 +43,7 @@
     <script src="../js/autores.js">
 
     </script>
+    
 
 
   </head>
@@ -67,10 +71,80 @@
   </nav>
 <section class="container">
     <div class="margem-navbar">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-        Cadastrar autor
-    </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-autor"
+      onclick="esconderAlertas()">
+          Cadastrar autor
+      </button>
+    <div class="modal fade" id="modal-autor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Cadastro de autor</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                  <label for="nome" id="labelnome"><strong>Nome</strong></label>
+                  <input type="text" class="form-control" id="nome" aria-describedby="nome" placeholder="exemplo">
+              
+              </div>
+
+              <div class="alert alert-danger" role="alert" id="alert-nome">
+                  Preencha o <a href="#" class="alert-link">nome</a>.
+              </div>
+
+
+              <div class="form-group">
+                <label for="endereco"><strong>Endereço</strong></label>
+                <textarea class="form-control" id="endereco-cad-autor" required="O campo Endereço precisa ser preenchido" placeholder="Rua exemplo, Pernambuco , recife, Número 8" rows="3"></textarea>
+              </div>
+
+              <div class="alert alert-danger" role="alert" id="alert-endereco">
+                Preencha o <a href="#" class="alert-link">endereco</a>.
+              </div>
+
+
+              <div class="form-group">
+                  <label for="telefone" id="label-telefone"><strong>Telefone</strong></label>
+                  <input class="form-control" id="telefone" aria-describedby="telefone" placeholder="(99) 99999-9999">
+              </div>
+              <small id="telefone-autor" class="form-text text-muted">Você pode cadastrar mais telefones depois.</small>
+              
+              </div>
+
+              <div class="alert alert-success" role="alert" id="alert-sucesso-cadastro">
+                Autor cadastrado com sucesso.
+              </div>
+
+
+
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-success" id="bt-cadastrar">Cadastrar</button>
+          </div>
+
+          </div>
+        
+        </div>
+    </div>
 </section>
+
+    <div class="container">
+      <div class="row">
+        <div class="clearfix"></div>
+        <br>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          meio
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+
 
 </body>
 </html>

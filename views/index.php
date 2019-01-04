@@ -249,7 +249,7 @@
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                 <button type="submit" class="btn btn-success" id="cadastrar">Cadastrar</button>
               </div>
-            </div>
+          </div>
           </div>
         </div>
     </div>

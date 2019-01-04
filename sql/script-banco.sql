@@ -332,7 +332,27 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+/* populando area_conhecimento */
+
 
 insert into aluno(id_usuario, matricula, curso) values ('1', '3123123', 'bsi');
 
 insert into professor(id_usuario, siape, lates) values ('1', '21323', 'ashuashuas');
+
+insert into area_conhecimento(nome, descricao) 
+values ('Ciências da saúde','Livros cujo temas principais são relacionados a saúde');
+
+insert into area_conhecimento(nome, descricao)
+values ('Ciências humanas','Livros cujo temas principais são relacionados a área de humanas (história, geografia, filosofia, etc');
+
+insert into area_conhecimento(nome, descricao) 
+values ('Ciências sociais aplicadas','Livros cujo temas principais são relacionados a aspectos sociais');
+
+insert into area_conhecimento(nome, descricao) 
+values ('Ciências exatas','Livros cujo temas principais são relacionados as areas exatas');
+
+insert into area_conhecimento(nome, descricao) 
+values ('Tecnologia da informação','Livros cujo temas principais são relacionados a area de T.I.');
+
+insert into area_conhecimento(nome, descricao) 
+values ('Linguística, Letras e Artes','Livros cujo temas principais são relacionados a literatura');

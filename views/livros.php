@@ -72,9 +72,17 @@
   </nav>
   <section class="container">
     <div class="margem-navbar">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-livro">
         Cadastrar livro
     </button>
+
+    <div class="row" style="margin-top: 150px;">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h1>Seja bem vindo a nossa biblioteca!</h1>
+      </div>
+    </div>
+  </section>
 </section>
 </body>
 </html>
