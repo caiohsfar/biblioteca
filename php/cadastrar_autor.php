@@ -5,7 +5,7 @@
     $nome = $_POST['nome'];
     $endereco = $_POST['endereco'];
 
-    $telefone = $_POST['telefone'];
+    $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : null;
 
 
 
@@ -13,10 +13,12 @@
     $link = $db->conecta_mysql();	
     $query_autor = "INSERT INTO  autor(nome,endereco)  values('$nome','$endereco')";
     if(mysqli_query($link,$query_autor)){
-        $id_autor = mysqli_insert_id($link);
-        echo $id_autor;
-        inserirTelefone($link, $id_autor,$telefone);
-        echo 'Autor inserido com sucesso';
+        if(isset($numero)){
+            $id_autor = mysqli_insert_id($link);
+            echo $id_autor;
+            inserirTelefone($link, $id_autor,$telefone);
+            echo 'Autor inserido com sucesso';
+        }
     }
     else{
         echo 'erro ao adicionar autor no banco de dados';

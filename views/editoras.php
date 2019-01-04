@@ -37,7 +37,7 @@
     <title>Funcionários</title>
 
     
-    <script src="../js/editoras.js">
+    <script src="../js/editora.js">
 
     </script>
 
@@ -72,9 +72,66 @@
   </nav>
   <section class="container">
     <div class="margem-navbar">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-        Cadastrar editora
-    </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-editora"
+      onclick="esconderAlertas()">
+          Cadastrar editora
+      </button>
+    <div class="modal fade" id="modal-editora" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Cadastro de editora</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                  <label for="nome" id="labelnome"><strong>Nome</strong></label>
+                  <input type="text" class="form-control" id="nome" aria-describedby="nome" placeholder="exemplo">
+              
+              </div>
+
+              <div class="alert alert-danger" role="alert" id="alert-nome">
+                  Preencha o <a href="#" class="alert-link">nome</a>.
+              </div>
+
+
+              <div class="form-group">
+                <label for="endereco"><strong>Endereço</strong></label>
+                <textarea class="form-control" id="endereco-cad-editora" required="O campo Endereço precisa ser preenchido" placeholder="Rua exemplo, Pernambuco , recife, Número 8" rows="3"></textarea>
+              </div>
+
+              <div class="alert alert-danger" role="alert" id="alert-endereco">
+                Preencha o <a href="#" class="alert-link">endereco</a>.
+              </div>
+
+
+              <div class="form-group">
+                  <label for="telefone" id="label-telefone"><strong>Telefone</strong></label>
+                  <input class="form-control" id="telefone" aria-describedby="telefone" placeholder="(99) 99999-9999">
+              </div>
+              <small id="telefone-editora" class="form-text text-muted">Você pode cadastrar mais telefones depois.</small>
+              
+              </div>
+
+              <div class="alert alert-success" role="alert" id="alert-sucesso-cadastro">
+                Editora cadastrada com sucesso.
+              </div>
+
+
+
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-success" id="bt-cadastrar">Cadastrar</button>
+          </div>
+
+          </div>
+        
+        </div>
+    </div>
 </section>
 </body>
 </html>

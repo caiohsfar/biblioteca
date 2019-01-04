@@ -12,11 +12,13 @@ function clickCadastro(){
             var endereco = $('#endereco-cad-autor').val();
           
             $.ajax({
-                url: '../php/cadastrar-autor.php',
+                url: '../php/cadastrar_autor.php',
                 method: 'post',
                 data: {nome : nome, telefone : telefone, endereco : endereco},
                 success: function(data){
                     limparCampos();
+                    esconderAlertas();
+
                     $('#alert-sucesso-cadastro').show();
             
                 }
