@@ -222,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`telefone_editora` (
   CONSTRAINT `fk_telefone_editora_editora1`
     FOREIGN KEY (`id_editora`)
     REFERENCES `biblioteca`.`editora` (`id_editora`)
-    ON DELETE NO ACTION
+    ON DELETE cascade
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -271,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`telefone_autor` (
   CONSTRAINT `fk_telefone_autor_autor1`
     FOREIGN KEY (`id_autor`)
     REFERENCES `biblioteca`.`autor` (`id_autor`)
-    ON DELETE NO ACTION
+    ON DELETE cascade
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -332,7 +332,9 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-/* populando area_conhecimento */
+-- -----------------------------------------------------
+-- Populando área de conhecimento
+-- -----------------------------------------------------
 
 
 insert into aluno(id_usuario, matricula, curso) values ('1', '3123123', 'bsi');
@@ -356,3 +358,56 @@ values ('Tecnologia da informação','Livros cujo temas principais são relacion
 
 insert into area_conhecimento(nome, descricao) 
 values ('Linguística, Letras e Artes','Livros cujo temas principais são relacionados a literatura');
+
+
+-- -----------------------------------------------------
+-- Populando autores
+-- -----------------------------------------------------
+
+
+insert into autor (id_autor, nome, endereco) values (1, 'Bobby', '1 Raven Center');
+insert into autor (id_autor, nome, endereco) values (2, 'Ethelyn', '18 Buena Vista Alley');
+insert into autor (id_autor, nome, endereco) values (3, 'Marsh', '60 Delladonna Street');
+insert into autor (id_autor, nome, endereco) values (4, 'Fabien', '121 Dunning Trail');
+insert into autor (id_autor, nome, endereco) values (5, 'Vanny', '3 Knutson Drive');
+insert into autor (id_autor, nome, endereco) values (6, 'Mel', '70 Redwing Alley');
+insert into autor (id_autor, nome, endereco) values (7, 'Aubry', '1499 Northwestern Way');
+insert into autor (id_autor, nome, endereco) values (8, 'Caresse', '55018 Surrey Drive');
+insert into autor (id_autor, nome, endereco) values (9, 'Anatole', '29877 Rowland Road');
+insert into autor (id_autor, nome, endereco) values (10, 'Bibby', '436 Summit Trail');
+insert into autor (id_autor, nome, endereco) values (11, 'Lisa', '59 Loftsgordon Crossing');
+insert into autor (id_autor, nome, endereco) values (12, 'Cordell', '1 Stone Corner Place');
+insert into autor (id_autor, nome, endereco) values (13, 'Trina', '4 Bonner Plaza');
+insert into autor (id_autor, nome, endereco) values (14, 'Dore', '14 Acker Crossing');
+insert into autor (id_autor, nome, endereco) values (15, 'Floris', '31011 Maryland Drive');
+insert into autor (id_autor, nome, endereco) values (16, 'Julie', '2 Division Trail');
+insert into autor (id_autor, nome, endereco) values (17, 'Shalne', '6649 South Park');
+insert into autor (id_autor, nome, endereco) values (18, 'Jilly', '21429 Monica Circle');
+insert into autor (id_autor, nome, endereco) values (19, 'Dorie', '2949 Glendale Circle');
+insert into autor (id_autor, nome, endereco) values (20, 'Octavia', '356 Walton Hill');
+
+
+-- -----------------------------------------------------
+-- Populando editoras
+-- -----------------------------------------------------
+
+insert into editora (id_editora, nome, endereco) values (1, 'White, Rice and Heidenreich', '145 Veith Hill');
+insert into editora (id_editora, nome, endereco) values (2, 'Greenholt, Schaefer and Swaniawski', '1 Utah Road');
+insert into editora (id_editora, nome, endereco) values (3, 'Maggio LLC', '27 Vera Center');
+insert into editora (id_editora, nome, endereco) values (4, 'Lynch, Bechtelar and Cormier', '9 Dakota Park');
+insert into editora (id_editora, nome, endereco) values (5, 'Flatley-Torphy', '0 Bartelt Point');
+insert into editora (id_editora, nome, endereco) values (6, 'Torp, Hilpert and Funk', '665 Old Gate Way');
+insert into editora (id_editora, nome, endereco) values (7, 'Rogahn Inc', '200 Lakeland Circle');
+insert into editora (id_editora, nome, endereco) values (8, 'Turcotte-Herzog', '9221 Hansons Drive');
+insert into editora (id_editora, nome, endereco) values (9, 'Huel, Hettinger and Boehm', '423 Killdeer Court');
+insert into editora (id_editora, nome, endereco) values (10, 'Medhurst-Lynch', '625 Veith Trail');
+insert into editora (id_editora, nome, endereco) values (11, 'Pfeffer-Cassin', '36804 Michigan Drive');
+insert into editora (id_editora, nome, endereco) values (12, 'Yundt-Gulgowski', '29863 Larry Circle');
+insert into editora (id_editora, nome, endereco) values (13, 'Waelchi Inc', '066 Oneill Plaza');
+insert into editora (id_editora, nome, endereco) values (14, 'Quitzon-Herman', '51034 Norway Maple Avenue');
+insert into editora (id_editora, nome, endereco) values (15, 'Batz-Olson', '5671 Sachtjen Court');
+insert into editora (id_editora, nome, endereco) values (16, 'Bergstrom Group', '51403 Fieldstone Court');
+insert into editora (id_editora, nome, endereco) values (17, 'Heaney, Dooley and Roberts', '8 Elka Alley');
+insert into editora (id_editora, nome, endereco) values (18, 'Brakus and Sons', '69814 Onsgard Drive');
+insert into editora (id_editora, nome, endereco) values (19, 'Langworth, Leffler and Davis', '83 Buell Junction');
+insert into editora (id_editora, nome, endereco) values (20, 'Gutkowski-Nikolaus', '1 Iowa Way');

@@ -6,7 +6,7 @@
     require_once('../classes/Professor.class.php');
     session_start();
     //gambiarra enquanto não existe o botao de deslogar
-    session_unset($_SESSION);
+    //session_unset($_SESSION);
 
     $email = $_POST['email'];
     $senha = $_POST['senha'];

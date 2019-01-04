@@ -1,8 +1,17 @@
 $(document).ready(function(){
     clickCadastro();
+    listarEditoras();
     $('#telefone').mask('(99)99999-9999)');
    
  });
+ function listarEditoras(){
+    $.ajax({
+        url: '../php/get_editoras.php',
+        success: function(data) {
+            $('#lista-editoras').html(data);
+        }
+    });
+}
  
  function clickCadastro(){
      $('#bt-cadastrar').click(function(){
@@ -16,7 +25,7 @@ $(document).ready(function(){
                  method: 'post',
                  data: {nome : nome, telefone : telefone, endereco : endereco},
                  success: function(data){
-                     alert(data);
+                     listarEditoras();
                      limparCampos();
                      esconderAlertas();
                      $('#alert-sucesso-cadastro').show();

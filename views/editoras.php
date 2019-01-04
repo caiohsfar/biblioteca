@@ -133,5 +133,17 @@
         </div>
     </div>
 </section>
+
+  <div class="container">
+        <div class="row">
+          <div class="clearfix"></div>
+          <br>
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <div id="lista-editoras" class="list-group"></div>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+  </div>
 </body>
 </html>

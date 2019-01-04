@@ -137,11 +137,11 @@
       <div class="row">
         <div class="clearfix"></div>
         <br>
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          meio
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div id="lista-autores" class="list-group"></div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-2"></div>
       </div>
     </div>
 

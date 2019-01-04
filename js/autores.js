@@ -1,8 +1,18 @@
 $(document).ready(function(){
    clickCadastro();
+   listarAutores();
    $('#telefone').mask('(99)99999-9999)');
   
 });
+function listarAutores(){
+    $.ajax({
+        url: '../php/get_autores.php',
+        success: function(data) {
+            $('#lista-autores').html(data);
+        }
+    });
+}
+
 
 function clickCadastro(){
     $('#bt-cadastrar').click(function(){
@@ -20,6 +30,7 @@ function clickCadastro(){
                     esconderAlertas();
 
                     $('#alert-sucesso-cadastro').show();
+                    listarAutores();
             
                 }
             });
