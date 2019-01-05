@@ -28,29 +28,26 @@ class UsuarioDAO{
 			$link = $db->conecta_mysql();	
 			$query = "INSERT INTO  aluno(id_usuario,matricula,curso)  values(".$aluno->getIdUsuario().",'".$aluno->getMatricula()."','".$aluno->getCurso()."')";
 			if(mysqli_query($link,$query)){
-				echo 'Inserido com sucesso';
+				return true;
 			}
 			else{
-			echo 'erro ao adicionar no banco de dados';
+			return false;
 			}
 		}
 
-		function UsuarioExiste($email){
+		function UsuarioExiste($email,$senha){
 			$usuario = new Usuario();
 			$db = new Db();
 			$link = $db->conecta_mysql();	
-			$sql = "SELECT * FROM usuario WHERE email = '$email'";
+			$sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
 			$resultado_busca = mysqli_query($link,$sql);
 
 			if($resultado_busca){
 				$dados_usuario =mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
 				if($dados_usuario['id_usuario']!=""){
-					return false;
+					return 'aasd';
 				}
-
 				return true;
-				
-
 			}
 			
 		}
@@ -60,10 +57,10 @@ class UsuarioDAO{
 			$link = $db->conecta_mysql();	
 			$query = "INSERT INTO  funcionario(id_usuario,siape)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
 			if(mysqli_query($link,$query)){
-				echo 'Inserido com sucesso';
+				return true;
 			}
 			else{
-			echo 'erro ao adicionar no banco de dados';
+				return false;
 			}
 		}
 
@@ -72,10 +69,10 @@ class UsuarioDAO{
 			$link = $db->conecta_mysql();	
 			$query = "INSERT INTO professor(id_usuario,siape,lates)  values(".$professor->getIdUsuario().",'".$professor->getSiape()."','".$professor->getLates()."')";
 			if(mysqli_query($link,$query)){
-				echo 'Inserido com sucesso';
+				return true;
 			}
 			else{
-			echo 'erro ao adicionar no banco de dados';
+				return false;
 			}
 		}
 
@@ -117,7 +114,7 @@ class UsuarioDAO{
 				echo 'Inserido com sucesso';
 			}
 			else{
-				echo 'Erro no bando de dados';
+				echo 'Erro no banco de dados';
 			}
 
 		}
@@ -131,7 +128,7 @@ class UsuarioDAO{
 				echo 'Inserido com sucesso';
 			}
 			else{
-				echo 'Erro no bando de dados';
+				echo 'Erro no banco de dados';
 			}
 
 		}
@@ -144,7 +141,7 @@ class UsuarioDAO{
 				echo 'Inserido com sucesso';
 			}
 			else{
-				echo 'Erro no bando de dados';
+				echo 'Erro no banco de dados';
 			}
 
 		}
@@ -158,7 +155,7 @@ class UsuarioDAO{
 				echo 'Inserido com sucesso';
 			}
 			else{
-				echo 'Erro no bando de dados';
+				echo 'Erro no banco de dados';
 			}
 
 		}
