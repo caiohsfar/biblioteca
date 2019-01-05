@@ -14,19 +14,11 @@
     $resultado_id = mysqli_query($link,$query_editora);
     if ($resultado_id){
         while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
-			echo '<a data-id_editora = '.$registro['id_editora'].' href="#" class="list-group-item">';
-				echo '<h4 class="list-group-item-heading">'.$registro['nome'].'</h4>';
-				echo '<p class="list-group-item-text">'.$registro['endereco'].'</p>';
-			echo '</a>';
+            echo '<option data-id_editora='.$registro['id_editora']. '>'.$registro['nome'].'</option>';
 		}
     }
     else{
         echo 'erro ao adicionar editora no banco de dados';
     }
-
-    
-
-
-
 
 ?>

@@ -14,23 +14,11 @@
     $resultado_id = mysqli_query($link,$query_autor);
     if ($resultado_id){
         while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
-            
-			echo '<a  data-id_autor = '.$registro['id_autor'].' href="#" class="list-group-item">';
-				echo '<h4 class="list-group-item-heading">'.$registro['nome'].'</h4>';
-				echo '<p class="list-group-item-text">'.$registro['endereco'].'</p>';
-			echo '</a>';
+            echo '<option data-id_autor='.$registro['id_autor']. '>'.$registro['nome'].'</option>';
 		}
     }
     else{
         echo 'erro ao adicionar autor no banco de dados';
     }
-
-
-    function getTelefones($registro,$link){
-
-    }
-
-
-
 
 ?>

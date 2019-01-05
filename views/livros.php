@@ -40,6 +40,14 @@
     <script src="../js/livros.js">
 
     </script>
+    <!-- Bootstrap Select search -->
+    <!-- docs: https://www.jqueryscript.net/form/Bootstrap-4-Dropdown-Select-Plugin-jQuery.html -->
+    <link rel="stylesheet" href="../js/Bootstrap-4-Dropdown-Select-Plugin-jQuery/dist/css/bootstrap-select.css">
+    
+    <script src="../js/Bootstrap-4-Dropdown-Select-Plugin-jQuery/dist/js/bootstrap-select.js"></script>
+    
+    
+
 
 
   </head>
@@ -76,12 +84,109 @@
         Cadastrar livro
     </button>
 
-    <div class="row" style="margin-top: 150px;">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <h1>Seja bem vindo a nossa biblioteca!</h1>
-      </div>
-    </div>
+    <div class="modal fade" id="modal-livro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Cadastro de livro</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div style="display: inline-block;" class="form-group">
+                <label for="select-autor"><strong>Autor</strong></label><br>
+                <select id="select-autor" class="selectpicker" data-live-search="true" title="Nenhum selecionado">
+                </select>
+              </div>
+              <div style="display: inline-block;"class="form-group">
+                  <label for="select-editora"><strong>Editora</strong></label><br>
+                  <select id="select-editora" class="selectpicker" data-live-search="true" title="Nenhuma selecionada">
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="isbn" id="label-isbn"><strong>ISBN</strong></label>
+                  <input type="text" class="form-control" id="isbn" aria-describedby="isbn" placeholder="999999999-9">
+              </div>
+              <div class="alert alert-danger" role="alert" id="alert-isbn">
+                  Preencha o <a href="https://pt.wikipedia.org/wiki/International_Standard_Book_Number" class="alert-link">ISBN</a>.
+              </div>
+              <div class="form-group">
+                  <label for="edicao" id="label-edicao"><strong>Edição</strong></label>
+                  <input type="number" min="1" max="100" class="form-control" id="edicao" aria-describedby="edicao" placeholder="99">
+              </div>
+              <div class="alert alert-danger" role="alert" id="alert-edicao">
+                  Preencha a <a href="#" class="alert-link">Edição</a>.
+              </div>
+              <div class="form-group">
+                  <label for="volume" id="label-volume"><strong>Volume</strong></label>
+                  <input type="number" min="1" max="100" class="form-control" id="volume" aria-describedby="volume" placeholder="99">
+              </div>
+              <div class="alert alert-danger" role="alert" id="alert-volume">
+                  Preencha o <a href="#" class="alert-link">Volume</a>.
+              </div>
+
+              <div style="display: inline-block;" class="form-group">
+                <label for="palavra" id="label-palavra"><strong>Palavras chave</strong></label> <br>
+                <select class="selectpicker" multiple data-live-search="true"     data-live-search-placeholder="Pesquisar" data-actions-box="true"
+                title="Nenhuma selecionada">>
+
+                  <optgroup label="filter1">
+                    <option>option1</option>
+                    <option>option2</option>
+                    <option>option3</option>
+                    <option>option4</option>
+                  </optgroup>
+                  <optgroup label="filter2">
+                    <option>option1</option>
+                    <option>option2</option>
+                    <option>option3</option>
+                    <option>option4</option>
+                  </optgroup>
+                  <optgroup label="filter3">
+                    <option>option1</option>
+                    <option>option2</option>
+                    <option>option3</option>
+                    <option>option4</option>
+                  </optgroup>
+                </select>
+               </div>
+
+               <div style="display: inline-block;"class="form-group">
+                  <label for="select-area-conhecimento"><strong>Área de conhecimento</strong></label><br>
+                  <select id="select-area-conhecimento" class="selectpicker" data-live-search="true" title="Nenhuma selecionada">
+                    <option>Hot Dog, Fries and a Soda</option>
+                    <option>Burger, Shake and a Smile</option>
+                    <option>Sugar, Spice and all things nice</option>
+                    <option>Baby Back Ribs</option>
+                    <option>A really really long option made to illustrate an issue with the live search in an inline form</option>
+                  </select>
+              </div>
+
+
+
+
+              <div class="alert alert-success" role="alert" id="alert-sucesso-cadastro">
+                Livro cadastrado com sucesso.
+              </div>
+
+
+             
+
+
+
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-success" id="bt-cadastrar">Cadastrar</button>
+          </div>
+
+          </div>
+        
+        </div>
+
+</div>
   </section>
 </section>
 </body>
