@@ -41,13 +41,32 @@ class UsuarioDAO{
 			$link = $db->conecta_mysql();	
 			$sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
 			$resultado_busca = mysqli_query($link,$sql);
+			$validacao = $this->UsuarioExisteEmail($email);
+			if($resultado_busca){
+				$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+				if($dados_usuario['email'] == $email && $dados_usuario['senha'] == $senha or $validacao == '1'){
+					return false;
+				} else {
+					return true;
+				}
+			}
+			
+		}
+
+		function UsuarioExisteEmail($email){
+			$usuario = new Usuario();
+			$db = new Db();
+			$link = $db->conecta_mysql();	
+			$sql = "SELECT * FROM usuario WHERE email = '$email'";
+			$resultado_busca = mysqli_query($link,$sql);
 
 			if($resultado_busca){
-				$dados_usuario =mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
-				if($dados_usuario['id_usuario']!=""){
-					return 'aasd';
+				$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+				if($dados_usuario['email'] == $email){
+					return '1';
+				} else {
+					return true;
 				}
-				return true;
 			}
 			
 		}

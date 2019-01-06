@@ -12,7 +12,6 @@ $usuario->setEndereco($_POST['endereco']);
 
 $usuarioDAO = new UsuarioDAO();
 if($usuarioDAO->UsuarioExiste($usuario->getEmail(), $usuario->getSenha()) == true){
-
 	$usuarioDAO->inserirUsuario($usuario);
 	$tipoConta = $_POST['tipoConta'];
 	if($tipoConta =="aluno" /*and !$usuarioDAO->existePerfilUsuario($usuario->getId(),$tipoConta)*/){
@@ -43,6 +42,7 @@ if($usuarioDAO->UsuarioExiste($usuario->getEmail(), $usuario->getSenha()) == tru
 	}
 } else {
 	$tipoConta = $_POST['tipoConta'];
+	return false;
 	if($tipoConta =="aluno" /*and !$usuarioDAO->existePerfilUsuario($usuario->getId(),$tipoConta)*/){
 		$aluno = new Aluno();
 		$usuario = $usuarioDAO->getUsuario($usuario->getEmail(),$usuario->getSenha());

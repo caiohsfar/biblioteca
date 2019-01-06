@@ -156,9 +156,11 @@ function esconderAlertas(){
                     success: function(data){
                             if(data==false){
                                 esconderAlertas();
+
                                 $('#alertUsuarioExiste').show();
                             }
                             else{
+                                alert(data);
                                 esconderAlertas();
                                 $('#alertSucessoCadastro').show();
                             }
