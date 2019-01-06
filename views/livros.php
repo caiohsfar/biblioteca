@@ -80,7 +80,7 @@
   </nav>
   <section class="container">
     <div class="margem-navbar">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-livro">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-livro" onclick="esconderAlertas()">
         Cadastrar livro
     </button>
 
@@ -97,13 +97,20 @@
             <form>
               <div style="display: inline-block;" class="form-group">
                 <label for="select-autor"><strong>Autor</strong></label><br>
-                <select id="select-autor" class="selectpicker" data-live-search="true" title="Nenhum selecionado">
+                <select id="select-autor" class="selectpicker" data-live-search="true" title="Nenhum selecionado" multiple data-live-search="true" data-actions-box="true">
                 </select>
               </div>
               <div style="display: inline-block;"class="form-group">
                   <label for="select-editora"><strong>Editora</strong></label><br>
-                  <select id="select-editora" class="selectpicker" data-live-search="true" title="Nenhuma selecionada">
+                  <select id="select-editora" class="selectpicker" data-live-search="true" title="Nenhuma selecionada" multiple data-live-search="true" data-actions-box="true">
                   </select>
+              </div>
+              <div class="form-group">
+                  <label for="nome" id="label-nome"><strong>Nome</strong></label>
+                  <input type="text" class="form-control" id="nome" aria-describedby="nome" placeholder="exemplo">
+              </div>
+              <div class="alert alert-danger" role="alert" id="alert-nome">
+                  Preencha o <a href="#" class="alert-link">Nome</a>.
               </div>
               <div class="form-group">
                   <label for="isbn" id="label-isbn"><strong>ISBN</strong></label>
@@ -129,38 +136,14 @@
 
               <div style="display: inline-block;" class="form-group">
                 <label for="palavra" id="label-palavra"><strong>Palavras chave</strong></label> <br>
-                <select class="selectpicker" multiple data-live-search="true"     data-live-search-placeholder="Pesquisar" data-actions-box="true"
+                <select id="select-palavra" class="selectpicker" multiple data-live-search="true"     data-live-search-placeholder="Pesquisar" data-actions-box="true"
                 title="Nenhuma selecionada">>
-
-                  <optgroup label="filter1">
-                    <option>option1</option>
-                    <option>option2</option>
-                    <option>option3</option>
-                    <option>option4</option>
-                  </optgroup>
-                  <optgroup label="filter2">
-                    <option>option1</option>
-                    <option>option2</option>
-                    <option>option3</option>
-                    <option>option4</option>
-                  </optgroup>
-                  <optgroup label="filter3">
-                    <option>option1</option>
-                    <option>option2</option>
-                    <option>option3</option>
-                    <option>option4</option>
-                  </optgroup>
                 </select>
                </div>
 
                <div style="display: inline-block;"class="form-group">
-                  <label for="select-area-conhecimento"><strong>Área de conhecimento</strong></label><br>
-                  <select id="select-area-conhecimento" class="selectpicker" data-live-search="true" title="Nenhuma selecionada">
-                    <option>Hot Dog, Fries and a Soda</option>
-                    <option>Burger, Shake and a Smile</option>
-                    <option>Sugar, Spice and all things nice</option>
-                    <option>Baby Back Ribs</option>
-                    <option>A really really long option made to illustrate an issue with the live search in an inline form</option>
+                  <label for="select-area"><strong>Área de conhecimento</strong></label><br>
+                  <select id="select-area" class="selectpicker" data-live-search="true" title="Nenhuma selecionada">
                   </select>
               </div>
 
@@ -179,7 +162,7 @@
           </form>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-            <button type="submit" class="btn btn-success" id="bt-cadastrar">Cadastrar</button>
+            <button type="submit" class="btn btn-success" id="btn-cadastrar">Cadastrar</button>
           </div>
 
           </div>

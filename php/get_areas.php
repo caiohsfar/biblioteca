@@ -10,15 +10,15 @@
 
     $db = new Db();
     $link = $db->conecta_mysql();	
-    $query_editora = "SELECT * FROM editora;";
-    $resultado_id = mysqli_query($link,$query_editora);
+    $query_area_conhecimento = "SELECT * FROM area_conhecimento;";
+    $resultado_id = mysqli_query($link,$query_area_conhecimento);
     if ($resultado_id){
         while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
-            echo '<option value='.$registro['id_editora']. '>'.$registro['nome'].'</option>';
+            echo '<option value='.$registro['id_area']. '>'.$registro['nome'].'</option>';
 		}
     }
     else{
-        echo 'erro ao adicionar editora no banco de dados';
+        echo 'erro ao adicionar area_conhecimento no banco de dados';
     }
 
 ?>

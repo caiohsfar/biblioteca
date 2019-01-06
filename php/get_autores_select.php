@@ -14,7 +14,7 @@
     $resultado_id = mysqli_query($link,$query_autor);
     if ($resultado_id){
         while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
-            echo '<option data-id_autor='.$registro['id_autor']. '>'.$registro['nome'].'</option>';
+            echo '<option value='.$registro['id_autor']. '>'.$registro['nome'].'</option>';
 		}
     }
     else{
