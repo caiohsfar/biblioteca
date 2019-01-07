@@ -55,7 +55,6 @@
             die();
         }
     }else{
-        echo "Livro existe";
         return false;
     }
 

@@ -21,20 +21,34 @@ function clickCadastrar(){
         var edicao = $("#edicao").val();    
         var volume = $("#volume").val();
         
-
+        
         $.ajax({
             url: '../php/cadastrar_livro.php',
             method: 'post',
             data: {autores: autores, editoras: editoras, palavras: palavras, id_area: id_area, nome: nome, isbn: isbn,edicao: edicao, volume: volume} ,
 
             success: function(data){
-                esconderAlertas();
-                $('#alert-sucesso-cadastro').show();
+                if (data == false){
+                    alert("Este ISBN já existe no nosso banco de dados.");
+                }else{
+                    esconderAlertas();
+                    limparCampos();
+                    $('#alert-sucesso-cadastro').show();
+                }
 
             }
         });
+        
     
     });
+}
+
+function limparCampos(){
+    $("#nome").val("");
+    $("#isbn").val("");     
+    $("#edicao").val("");    
+    $("#volume").val("");
+
 }
 
 
@@ -111,11 +125,15 @@ function validarCampos(){
         $('#alert-volume').show();
         validacao = false;
     }
-    if($('#select-autor').val()==""){
+    if(!$('#select-autor').val()){
         validacao = false;
         validacaoSelect = false;
     }
-    if($('#select-editora').val()==""){
+    if(!$('#select-editora').val()){
+        validacao = false;
+        validacaoSelect = false;
+    }
+    if(!$('#select-palavra').val()){
         validacao = false;
         validacaoSelect = false;
     }
@@ -123,13 +141,10 @@ function validarCampos(){
         validacao = false;
         validacaoSelect = false;
     }
-    if($('#select-palavra').val()==""){
-        validacao = false;
-        validacaoSelect = false;
-    }
     if(!validacaoSelect){
         alert("Selecione uma opção");
     }
+   
     return validacao;
 }
 
