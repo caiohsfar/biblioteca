@@ -65,7 +65,7 @@ class UsuarioDAO{
 				if($dados_usuario['email'] == $email){
 					return '1';
 				} else {
-					return true;
+					return false;
 				}
 			}
 			
