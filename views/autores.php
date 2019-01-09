@@ -137,13 +137,72 @@
       <div class="row">
         <div class="clearfix"></div>
         <br>
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div id="lista-autores" class="list-group"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <ul id="lista-autores" class="list-group"></ul>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
       </div>
     </div>
+
+    <section class="container margem-navbar">
+    <div class="row">
+        <!-- Modal de detalhar -->
+
+        <div class="col-md-4">
+                <!-- Modal -->
+                <div class="modal fade" id="detalhar_autor_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detalhes</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                        <div id="detalhes_autor">
+                      
+                        </div>
+                       
+
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+      </div>
+      </section>
+      <div class="row">
+        <!-- Modal de add telefone -->
+
+        <div class="col-md-2">
+                <!-- Modal -->
+                <div class="modal fade" id="add_telefone_modal_autor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar telefone</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="adicionar_telefone" id="label-add-telefone"><strong>Telefone</strong></label>
+                            <input class="form-control" id="adicionar_delefone_autor" aria-describedby="telefone" placeholder="(99) 99999-9999">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                          <button type="submit" class="btn btn-success" id="btn_add_telefone_autor">Adicionar</button>
+                        </div>
+
+                    </div>
+                </div>
+      </div>
 
 
 </body>

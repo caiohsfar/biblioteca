@@ -9,8 +9,24 @@ $(document).ready(function(){
         url: '../php/get_editoras.php',
         success: function(data) {
             $('#lista-editoras').html(data);
+            clickDetalhes();
         }
     });
+}
+function clickDetalhes(){
+    $('.btn-detalhes').click(function(){
+        var id_editora = $(this).data('id_editora');
+        $.ajax({
+            url: '../php/editora/detalhes_editora.php',
+            method: 'post',
+            data: {id_editora : id_editora},
+            success: function(data){
+                $('#detalhes_editora').html(data);
+            }
+        });
+        
+        //window.location.href = '../php/editora/detalhes_editora.php?'+id_editora+'';
+    })
 }
  
  function clickCadastro(){
@@ -29,6 +45,7 @@ $(document).ready(function(){
                      limparCampos();
                      esconderAlertas();
                      $('#alert-sucesso-cadastro').show();
+                     
              
                  }
              });
@@ -36,9 +53,9 @@ $(document).ready(function(){
      })
  }
  function limparCampos(){
-     var nome = $('#nome').val('');
-     var telefone = $('#telefone').val('');
-     var endereco = $('#endereco-cad-editora').val('');
+     $('#nome').val('');
+     $('#telefone').val('');
+     $('#endereco-cad-editora').val('');
  }
  
  

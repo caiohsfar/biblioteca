@@ -13,7 +13,7 @@
     $link = $db->conecta_mysql();	
     $query_autor = "INSERT INTO  autor(nome,endereco)  values('$nome','$endereco')";
     if(mysqli_query($link,$query_autor)){
-        if(isset($numero)){
+        if($telefone != ""){
             $id_autor = mysqli_insert_id($link);
             echo $id_autor;
             inserirTelefone($link, $id_autor,$telefone);

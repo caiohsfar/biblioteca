@@ -15,10 +15,10 @@
     if ($resultado_id){
         while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
             
-			echo '<a  data-id_autor = '.$registro['id_autor'].' href="#" class="list-group-item">';
+			echo '<li  data-id_autor = '.$registro['id_autor'].' class="list-group-item d-flex justify-content-between align-items-center">';
 				echo '<h4 class="list-group-item-heading">'.$registro['nome'].'</h4>';
-				echo '<p class="list-group-item-text">'.$registro['endereco'].'</p>';
-			echo '</a>';
+                echo '<button data-toggle="modal" data-target="#detalhar_autor_modal" data-id_autor = '.$registro['id_autor'].' class="btn btn-link btn-detalhes" >Detalhes</button>';
+			echo '</li>';
 		}
     }
     else{
@@ -26,10 +26,7 @@
     }
 
 
-    function getTelefones($registro,$link){
-
-    }
-
+    
 
 
 

@@ -12,7 +12,7 @@
     $link = $db->conecta_mysql();	
     $query_editora = "INSERT INTO  editora(nome,endereco)  values('$nome','$endereco')";
     if(mysqli_query($link,$query_editora)){
-        if (isset($numero)){
+        if ($telefone != ""){
             $id_editora = mysqli_insert_id($link);
             echo $id_editora;
             inserirTelefone($link, $id_editora,$telefone);
@@ -25,6 +25,7 @@
     }
 
     function inserirTelefone($link,$id_editora,$telefone){
+
         $query_telefone = "INSERT INTO  telefone_editora(numero, id_editora)  values('$telefone','$id_editora')";
 
         if(mysqli_query($link,$query_telefone)){

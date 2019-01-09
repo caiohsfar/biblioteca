@@ -9,6 +9,7 @@ function listarAutores(){
         url: '../php/get_autores.php',
         success: function(data) {
             $('#lista-autores').html(data);
+            clickDetalhes();
         }
     });
 }
@@ -31,6 +32,7 @@ function clickCadastro(){
 
                     $('#alert-sucesso-cadastro').show();
                     listarAutores();
+                    
             
                 }
             });
@@ -38,11 +40,28 @@ function clickCadastro(){
     })
 }
 function limparCampos(){
-    var nome = $('#nome').val('');
-    var telefone = $('#telefone').val('');
-    var endereco = $('#endereco-cad-autor').val('');
+    $('#nome').val('');
+    $('#telefone').val('');
+    $('#endereco-cad-autor').val('');
 }
 
+function clickDetalhes(){
+    $('.btn-detalhes').click(function(){
+        var id_autor = $(this).data('id_autor');
+        $.ajax({
+            url: '../php/autor/detalhes_autor.php',
+            method: 'post',
+            data: {id_autor : id_autor},
+            success: function(data){
+                
+                $('#detalhes_autor').html(data);
+                
+            }
+        });
+        
+        //window.location.href = '../php/autor/detalhes_autor.php?'+id_autor+'';
+    })
+}
 
 
 function esconderAlertas(){
