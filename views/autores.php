@@ -192,12 +192,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="adicionar_telefone" id="label-add-telefone"><strong>Telefone</strong></label>
-                            <input class="form-control" id="adicionar_delefone_autor" aria-describedby="telefone" placeholder="(99) 99999-9999">
+                            <label for="ip_add_telefone_autor" id="label-add-telefone"><strong>Telefone</strong></label>
+                            <input class="form-control" id="ip_add_telefone_autor" aria-describedby="telefone" placeholder="(99) 99999-9999">
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                          <button type="submit" class="btn btn-success" id="btn_add_telefone_autor">Adicionar</button>
+                          <button id="btn_conf_add_telefone_autor" type="submit" class="btn btn-success">Adicionar</button>
                         </div>
 
                     </div>

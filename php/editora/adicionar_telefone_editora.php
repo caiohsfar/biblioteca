@@ -8,12 +8,12 @@
 
     require_once('../../classes/Database.class.php');
     $telefone = $_POST['telefone'];
-    $id_autor = $_POST['id_autor'];
+    $id_editora = $_POST['id_editora'];
 
     $db = new Db();
     $link = $db->conecta_mysql();	
-    $query_autor = "INSERT INTO telefone_autor (numero, id_autor) VALUES ('$telefone','$id_autor');";
-    $resultado_id = mysqli_query($link,$query_autor);
+    $query_editora = "INSERT INTO telefone_editora (numero, id_editora) VALUES ('$telefone','$id_editora');";
+    $resultado_id = mysqli_query($link,$query_editora);
     if ($resultado_id){
        echo '1';
     }

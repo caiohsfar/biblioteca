@@ -7,13 +7,12 @@
     }
 
     require_once('../../classes/Database.class.php');
-    $telefone = $_POST['telefone'];
-    $id_autor = $_POST['id_autor'];
+    $id_telefone = $_POST['id_telefone'];
 
     $db = new Db();
     $link = $db->conecta_mysql();	
-    $query_autor = "INSERT INTO telefone_autor (numero, id_autor) VALUES ('$telefone','$id_autor');";
-    $resultado_id = mysqli_query($link,$query_autor);
+    $query_editora = "DELETE FROM telefone_editora WHERE id_telefone = '$id_telefone'";
+    $resultado_id = mysqli_query($link,$query_editora);
     if ($resultado_id){
        echo '1';
     }

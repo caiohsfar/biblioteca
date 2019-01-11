@@ -1,6 +1,7 @@
 $(document).ready(function(){
    clickCadastro();
    listarAutores();
+   clickAddTelefone();
    $('#telefone').mask('(99)99999-9999)');
   
 });
@@ -13,7 +14,54 @@ function listarAutores(){
         }
     });
 }
-
+function clickAddTelefone(){
+    $("#btn_conf_add_telefone_autor").click(function(){
+        if (validarCamposTelefone()){
+            var telefone = $('#ip_add_telefone_autor').val();
+            var id_autor = $("#btn_add_telefone_autor").data('id_autor');
+            $.ajax({
+                url: '../php/autor/adicionar_telefone_autor.php',
+                method: 'post',
+                data: {id_autor : id_autor, telefone:telefone},
+                success: function(data){
+                    if (data){
+                        limparCamposTelefone();
+                        requisitarDetalhes(id_autor);
+                        alert("Telefone adicionado com sucesso");
+                        
+                    
+                    }else{
+                        alert("Erro ao dicionar telefone");
+                    }
+                    
+                }
+            });
+        }
+    });
+}
+function limparCamposTelefone(){
+    $("#ip_add_telefone_autor").val("");
+}
+function validarCamposTelefone(){
+    var validacao = true;
+     if($('#ip_add_telefone_autor').val().trim() == ""){
+         alert("Preencha o campo corretamente")
+         validacao =  false;
+     }
+     return validacao;
+}
+function requisitarDetalhes(id_autor){
+    $.ajax({
+        url: '../php/autor/detalhes_autor.php',
+        method: 'post',
+        data: {id_autor : id_autor},
+        success: function(data){
+            $('#detalhes_autor').html(data);
+            clickRemoverTelefone();
+        }
+    });
+}
+ 
 
 function clickCadastro(){
     $('#bt-cadastrar').click(function(){
@@ -84,3 +132,22 @@ function validaCamposCadastro(){
 
     return validacao;
 }
+function clickRemoverTelefone(){
+    $('.btn_rem_telefone_autor').click(function(){
+        var id_telefone =  $(this).data('id_telefone_autor');
+        var id_autor = $("#btn_add_telefone_autor").data('id_autor');
+        $.ajax({
+            url: '../php/autor/remover_telefone_autor.php',
+            method: 'post',
+            data: {id_telefone: id_telefone},
+            success: function(data){
+                if (data){
+                    requisitarDetalhes(id_autor);
+                }else{
+                    alert("Erro ao remover telefone");
+                }
+                
+            }
+        });
+    })
+ }
