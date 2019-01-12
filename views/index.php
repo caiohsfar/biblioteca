@@ -149,8 +149,6 @@
             <div class="form-group" id="tipoCargo">
               <label for="cargo"><strong>Cargo</strong></label>
               <select class="custom-select" name="tipo_cargo">
-                <option selected value="">Bibliotecário(a)</option>
-                <option value="1">Catalogador</option>
                 <option selected value="bibliotecario">Bibliotecário(a)</option>
                 <option value="catalogador">Catalogador</option>
               </select>
