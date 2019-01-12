@@ -337,9 +337,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 
 
-insert into aluno(id_usuario, matricula, curso) values ('1', '3123123', 'bsi');
 
-insert into professor(id_usuario, siape, lates) values ('1', '21323', 'ashuashuas');
 
 insert into area_conhecimento(nome, descricao) 
 values ('Ciências da saúde','Livros cujo temas principais são relacionados a saúde');
