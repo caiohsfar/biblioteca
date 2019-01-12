@@ -146,6 +146,14 @@
               </label>
             </div>
 
+            <div class="form-group" id="tipoCargo">
+              <label for="cargo"><strong>Cargo</strong></label>
+              <select class="custom-select" name="tipo_cargo">
+                <option selected value="">Bibliotecário(a)</option>
+                <option value="1">Catalogador</option>
+              </select>
+            </div>
+
             <div class="form-group">
                 <label for="siape" id="labelSiape"><strong>Siape</strong></label>
                 <input type="text" class="form-control" id="siape" aria-describedby="siape" placeholder="exemplo123">
@@ -221,7 +229,6 @@
               <div class="alert alert-danger" role="alert" id="alertEmail">
                 Preencha o <a href="#" class="alert-link">email</a>.
               </div>
-
 
               <div class="form-group">
                 <label for="senha"><strong>Senha</strong></label>

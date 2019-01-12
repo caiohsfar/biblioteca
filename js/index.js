@@ -57,6 +57,7 @@ function esconderAlertas(){
             $('#alertEmail').hide();
             $('#alertSenha').hide();
             $('#alertEndereco').hide();
+            $('#alertDescricao').hide();
             $('#alertMatricula').hide();
             $('#alertUsuarioExiste').hide();
             $('#alertSucessoCadastro').hide();
@@ -146,7 +147,9 @@ function esconderAlertas(){
                 if(tipoConta=="funcionario"){
                     var siape = $('#siape').val();
                     var lates = $('#lates').val();
+                    var cargo = $('#tipoCargo').val();
                     var curso = null;
+    
                 }
 
                 $.ajax({
@@ -156,7 +159,7 @@ function esconderAlertas(){
                     success: function(data){
                             if(data==false){
                                 esconderAlertas();
-
+                                alert(data);
                                 $('#alertUsuarioExiste').show();
                             }
                             else{
@@ -189,6 +192,7 @@ function esconderAlertas(){
 
     function mostrarCampoRadio(){
         var radios = document.querySelectorAll('input[type=radio][name="tipoConta"]');
+            $('#tipoCargo').hide();
             $('#siape').hide();
             $('#labelSiape').hide();
             //$('#matricula').hide();
@@ -206,6 +210,7 @@ function esconderAlertas(){
                     $('#labelMatricula').show();
                     $('#curso').show();
                     $('#labelCurso').show();
+                    $('#tipoCargo').hide();
                     $('#lates').hide();
                     $('#labelLates').hide();
                    }
@@ -216,11 +221,13 @@ function esconderAlertas(){
                     $('#labelMatricula').hide();
                     $('#curso').hide();
                     $('#labelCurso').hide();
+                    $('#tipoCargo').hide();
                     $('#lates').show();
                     $('#labelLates').show();
                    }
 
                    else if ( this.value =="funcionario" ) {
+                    $('#tipoCargo').show();
                     $('#siape').show();
                     $('#labelSiape').show();
                     $('#matricula').hide();

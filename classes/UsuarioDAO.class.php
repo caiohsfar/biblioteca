@@ -23,103 +23,142 @@ class UsuarioDAO{
 		}
 
 
-		function inserirAluno($aluno){
-			$db = new Db();
-			$link = $db->conecta_mysql();	
-			$query = "INSERT INTO  aluno(id_usuario,matricula,curso)  values(".$aluno->getIdUsuario().",'".$aluno->getMatricula()."','".$aluno->getCurso()."')";
-			if(mysqli_query($link,$query)){
-				return true;
-			}
-			else{
+	function inserirAluno($aluno){
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$query = "INSERT INTO  aluno(id_usuario,matricula,curso)  values(".$aluno->getIdUsuario().",'".$aluno->getMatricula()."','".$aluno->getCurso()."')";
+		if(mysqli_query($link,$query)){
+			return true;
+		}
+		else{
 			return false;
-			}
 		}
+	}
 
-		function UsuarioExiste($email,$senha){
-			$usuario = new Usuario();
-			$db = new Db();
-			$link = $db->conecta_mysql();	
-			$sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
-			$resultado_busca = mysqli_query($link,$sql);
-			$validacao = $this->UsuarioExisteEmail($email);
-			if($resultado_busca){
-				$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
-				if($dados_usuario['email'] == $email && $dados_usuario['senha'] == $senha or $validacao == '1'){
-					return false;
-				} else {
-					return true;
-				}
-			}
-			
-		}
-
-		function UsuarioExisteEmail($email){
-			$usuario = new Usuario();
-			$db = new Db();
-			$link = $db->conecta_mysql();	
-			$sql = "SELECT * FROM usuario WHERE email = '$email'";
-			$resultado_busca = mysqli_query($link,$sql);
-
-			if($resultado_busca){
-				$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
-				if($dados_usuario['email'] == $email){
-					return '1';
-				} else {
-					return false;
-				}
-			}
-			
-		}
-
-		function inserirFuncionario($funcionario){
-			$db = new Db();
-			$link = $db->conecta_mysql();	
-			$query = "INSERT INTO  funcionario(id_usuario,siape)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
-			if(mysqli_query($link,$query)){
+	function usuarioExiste($email,$senha){
+		$usuario = new Usuario();
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
+		$resultado_busca = mysqli_query($link,$sql);
+		$validacao = $this->UsuarioExisteEmail($email);
+		if($resultado_busca){
+			$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+			if($dados_usuario['email'] == $email && $dados_usuario['senha'] == $senha or $validacao == false){
+				return false;
+			} else {
 				return true;
 			}
-			else{
+		}
+		
+	}
+
+	function existePerfilUsuario($id,$tipoConta){
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$sql = "SELECT * FROM 'tipoConta' WHERE id = '$id'";
+		$resultado_busca = mysqli_query($link,$sql);
+		if($resultado_busca){
+			$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+			if($dados_usuario['id_usuario'] == ''){
+				return true;
+			} else {
 				return false;
 			}
 		}
+		
+	}
 
-		function inserirProfessor($professor){
-			$db = new Db();
-			$link = $db->conecta_mysql();	
-			$query = "INSERT INTO professor(id_usuario,siape,lates)  values(".$professor->getIdUsuario().",'".$professor->getSiape()."','".$professor->getLates()."')";
-			if(mysqli_query($link,$query)){
+	function UsuarioExisteEmail($email){
+		$usuario = new Usuario();
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$sql = "SELECT * FROM usuario WHERE email = '$email'";
+		$resultado_busca = mysqli_query($link,$sql);
+		if($resultado_busca){
+			$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+			if($dados_usuario['email'] == $email){
+				return false;
+			} else {
 				return true;
 			}
-			else{
-				return false;
-			}
 		}
+		
+	}
+
+	function inserirFuncionario($funcionario){
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$query = "INSERT INTO  funcionario(id_usuario,siape)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
+		if(mysqli_query($link,$query)){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	function inserirCargo($funcionario){
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$query = "INSERT INTO  cargo(id_cargo,nome,descricao)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
+		if(mysqli_query($link,$query)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	function inserirFuncionarioCargo($funcionario){
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$query = "INSERT INTO  funcionario_cargo(id_cargo,id_usuario,data)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
+		if(mysqli_query($link,$query)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	function inserirProfessor($professor){
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$query = "INSERT INTO professor(id_usuario,siape,lates)  values(".$professor->getIdUsuario().",'".$professor->getSiape()."','".$professor->getLates()."')";
+		if(mysqli_query($link,$query)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
 	function getUsuario($email,$senha){
-			$usuario = new Usuario();
-			$db = new Db();
-			$link = $db->conecta_mysql();	
-			$sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
-			$resultado_busca = mysqli_query($link,$sql);
+		$usuario = new Usuario();
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
+		$resultado_busca = mysqli_query($link,$sql);
 
-			if($resultado_busca){
-				$dados_usuario =mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
-				if($dados_usuario['id_usuario']==""){
-					return "null";
-				}
-				else{
-					$usuario->setId($dados_usuario['id_usuario']);
-					$usuario->setNome($dados_usuario['nome']);
-					$usuario->setEmail($dados_usuario['email']);
-					$usuario->setSenha($dados_usuario['senha']);
-					$usuario->setEndereco($dados_usuario['endereco']);
-				}
-
-				return $usuario;
-
+		if($resultado_busca){
+			$dados_usuario =mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+			if($dados_usuario['id_usuario']==""){
+				return "null";
 			}
-			
+			else{
+				$usuario->setId($dados_usuario['id_usuario']);
+				$usuario->setNome($dados_usuario['nome']);
+				$usuario->setEmail($dados_usuario['email']);
+				$usuario->setSenha($dados_usuario['senha']);
+				$usuario->setEndereco($dados_usuario['endereco']);
+			}
+
+			return $usuario;
+
 		}
+		
+	}
 
 	function atualizarUsuario($usuario){
 			$db = new Db();
