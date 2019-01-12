@@ -149,13 +149,7 @@
               </label>
             </div>
 
-            <div class="form-group" id="tipoCargo">
-              <label for="cargo"><strong>Cargo</strong></label>
-              <select class="custom-select" name="tipo_cargo">
-                <option selected value="">Bibliotecário(a)</option>
-                <option value="1">Catalogador</option>
-              </select>
-            </div>
+            
 
             <div class="form-group">
                 <label for="siape" id="labelSiape"><strong>Siape</strong></label>

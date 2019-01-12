@@ -5,32 +5,33 @@
 	 */
 	class FuncionarioCargo{
 		
-		private $cargo;
-		private $descricao;
-		private $idUsuario;
+		private $idCargo;
+		private $idFuncionario;
+		private $data;
 
-	function getCargo(){
-		return $this->cargo;
+	function getIdCargo(){
+		return $this->idCargo;
 	}
 
-	function getDescricao(){
-		return $this->descricao;
+	function setIdCargo($idCargo){
+		$this->idCargo = $idCargo;
 	}
 
-	function getIdUsuario(){
-		return $this->idUsuario;
+	function getIdFuncionario(){
+		return $this->idFuncionario;
 	}
 
-	function setCargo($nome){
-		$this->cargo = $cargo;
+	function setIdFuncionario($idFuncionario){
+		$this->idFuncionario = $idFuncionario;
 	}
 
-	function setDescricao($email){
-		$this->descricao = $descricao;
+	function getData(){
+		return $this->data;
 	}
 
-	function setIdUsuario($idUsuario){
-		$this->idUsuario = $idUsuario;
+	function setData($data){
+		$this->data = $data;
 	}
+}
 
 ?>

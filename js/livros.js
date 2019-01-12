@@ -39,6 +39,7 @@ function clickCadastrar(){
                     esconderAlertas();
                     limparCampos();
                     $('#alert-sucesso-cadastro').show();
+                    listar();
                 }
 
             }

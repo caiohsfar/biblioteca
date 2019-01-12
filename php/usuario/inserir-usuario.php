@@ -41,6 +41,10 @@ if($usuarioDAO->UsuarioExiste($usuario->getEmail(), $usuario->getSenha()) == tru
 		$funcionario->setSiape($_POST['siape']);
 		$funcionario->setIdUsuario($usuario->getId());
 		$usuarioDAO->inserirFuncionario($funcionario);
+
+		
+		$usuarioDAO->inserirFuncionario($funcionario);
+		
 	}
 } else {
 	$tipoConta = $_POST['tipoConta'];
@@ -72,16 +76,34 @@ if($usuarioDAO->UsuarioExiste($usuario->getEmail(), $usuario->getSenha()) == tru
 
 	if($tipoConta =="funcionario" and $usuarioDAO->existePerfilUsuario($usuario->getId(),$tipoConta)){
 		$funcionario = new Funcionario();
-		//$cargo = new FuncionarioCargo();
+		$tipoConta = $_POST['tipoCargo'];
 		$usuario = $usuarioDAO->getUsuario($usuario->getEmail(),$usuario->getSenha());
 		$funcionario->setSiape($_POST['siape']);
 		$funcionario->setIdUsuario($usuario->getId());
-		//$cargo->setCargo();
-		//$cargo->setDescricao();
-		if($usuarioDAO->inserirFuncionario($funcionario) == false){
-			return false;
+		
+		$funcionarioCargo = new FuncionarioCargo();
+		$funcionarioCargo->setIdCargo($cargo->getIdCargo);
+		$funcionarioCargo->setIdUsuario($usuario->getId());
+		$data = date('d/m/y').'<br />';
+		$funcionarioCargo->setData('$data');
+
+		$cargo = new Cargo();
+
+		if($tipoConta == "bibliotecario"){
+			$cargo->setIdCargo($cargo->getIdCargo());
+			$cargo->setNome('Bibliotecário(a)');
+			$cargo->setDescricao('Administrador da biblioteca');
+
 		} else {
+			$cargo->setIdCargo($cargo->getIdCargo());
+			$cargo->setNome('Catalogador');
+			$cargo->setDescricao('Responsável por armazenamento, disseminação e recuperação do acervo');
+
+		}
+		if($usuarioDAO->inserirFuncionario($funcionario) and $usuarioDAO->inserirCargo($cargo) and $usuarioDAO->inserirFuncionarioCargo($funcionarioCargo,$funcionario)){
 			return true;
+		} else {
+			return false;
 		}
 	}
 }

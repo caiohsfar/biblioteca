@@ -113,10 +113,10 @@ class UsuarioDAO{
 		}
 	}
 
-	function inserirCargo($funcionario){
+	function inserirCargo($cargo){
 		$db = new Db();
 		$link = $db->conecta_mysql();	
-		$query = "INSERT INTO  cargo(id_cargo,nome,descricao)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
+		$query = "INSERT INTO  cargo(id_cargo,nome,descricao)  values(".$cargo->getIdCargo().",'".$cargo->getNome()."','".$cargo->getDescricao()."')";
 		if(mysqli_query($link,$query)){
 			return true;
 		}
@@ -125,10 +125,10 @@ class UsuarioDAO{
 		}
 	}
 
-	function inserirFuncionarioCargo($funcionario){
+	function inserirFuncionarioCargo($funcionarioCargo,$funcionario){
 		$db = new Db();
 		$link = $db->conecta_mysql();	
-		$query = "INSERT INTO  funcionario_cargo(id_cargo,id_usuario,data)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
+		$query = "INSERT INTO  funcionario_cargo(id_cargo,id_usuario,data)  values(".$funcionarioCargo->getIdCargo().",'".$funcionario->getIdUsuario()."','".$funcionarioCargo->getData()."')";
 		if(mysqli_query($link,$query)){
 			return true;
 		}
@@ -172,6 +172,7 @@ class UsuarioDAO{
 			return $usuario;
 
 		}
+	}
 		function getUsuarioById($id){
 			$usuario = new Usuario();
 			$db = new Db();
@@ -237,20 +238,6 @@ class UsuarioDAO{
 	}
 
 
-
-		function inserirTelefone($link,$id_editora,$telefone){
-
-        $query_telefone = "INSERT INTO  telefone_editora(numero, id_editora)  values('$telefone','$id_editora')";
-
-        if(mysqli_query($link,$query_telefone)){
-            echo 'Telefone inserido com sucesso';
-        }
-        else{
-            echo 'erro ao adicionar telefone no banco de dados';
-        }
-
-    }
-
 	function atualizarFuncionario($funcionario){
 			$db = new Db();
 			$link = $db->conecta_mysql();
@@ -311,7 +298,8 @@ class UsuarioDAO{
 			$link = $db->conecta_mysql();
 			$sql = "DELETE FROM aluno WHERE id_usuario = '$id' ";
 			mysqli_query($link,$sql);
-		}
-
+		
 	}
+}
+
 ?>

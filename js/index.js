@@ -161,7 +161,7 @@ function esconderAlertas(){
                     success: function(data){
                             if(data==false){
                                 esconderAlertas();
-                                
+                            
                                 $('#alertUsuarioExiste').show();
                             }
                             else{
