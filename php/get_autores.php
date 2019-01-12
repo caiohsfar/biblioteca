@@ -16,8 +16,9 @@
         while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
             
 			echo '<li  data-id_autor = '.$registro['id_autor'].' class="list-group-item d-flex justify-content-between align-items-center">';
-				echo '<h4 class="list-group-item-heading">'.$registro['nome'].'</h4>';
-                echo '<button data-toggle="modal" data-target="#detalhar_autor_modal" data-id_autor = '.$registro['id_autor'].' class="btn btn-link btn-detalhes" >Detalhes</button>';
+                echo '<div><h4 class="list-group-item-heading">'.$registro['nome'].'</h4>';
+                echo '<button data-toggle="modal" data-target="#detalhar_autor_modal" data-id_autor = '.$registro['id_autor'].' class="btn btn-link btn-detalhes" >Detalhes</button></div>';
+                echo '<span><button style="color:red;" data-id_autor = '.$registro['id_autor'].' class="btn btn-link btn-remover" >Remover</button></span>';
 			echo '</li>';
 		}
     }

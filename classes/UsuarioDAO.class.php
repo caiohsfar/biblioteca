@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 
 require_once('Database.class.php');
 require_once('Usuario.class.php');
@@ -10,18 +11,32 @@ require_once('Professor.class.php');
 
 class UsuarioDAO{
 
-    function inserirUsuario($usuario){
+    function inserirUsuario($usuario,$telefone){
 			$db = new Db();
 			$link = $db->conecta_mysql();	
 			$query = "INSERT INTO  usuario(nome,email,senha,endereco)  values('".$usuario->getNome()."','".$usuario->getEmail()."','".$usuario->getSenha()."','".$usuario->getEndereco()."')";
 			if(mysqli_query($link,$query)){
 				echo 'Inserido com sucesso';
+				$this->inserirTelefone($telefone,$link,$db);
 			}
 			else{
 			echo 'erro ao adicionar no banco de dados';
 			}
 		}
 
+	function inserirTelefone($telefone,$link,$db){
+		if($telefone != ""){
+			$id_usuario = mysqli_insert_id($link);
+			echo "'$id_usuario'";
+			$query_telefone = "INSERT INTO  telefone_usuario(numero, id_usuario)  values('$telefone','$id_usuario')";
+			if(mysqli_query($link,$query_telefone)){
+				echo 'Telefone inserido com sucesso';
+			}
+			else{
+				echo 'erro ao adicionar telefone no banco de dados';
+			}
+		}
+	}
 
 	function inserirAluno($aluno){
 		$db = new Db();
@@ -157,25 +172,84 @@ class UsuarioDAO{
 			return $usuario;
 
 		}
-		
-	}
+		function getUsuarioById($id){
+			$usuario = new Usuario();
+			$db = new Db();
+			$link = $db->conecta_mysql();	
+			$sql = "SELECT * FROM usuario WHERE id_usuario = '$id'";
+			$resultado_busca = mysqli_query($link,$sql);
 
-	function atualizarUsuario($usuario){
+			if($resultado_busca){
+				$dados_usuario =mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+				if($dados_usuario['id_usuario']==""){
+					return "null";
+				}
+				else{
+					$usuario->setId($dados_usuario['id_usuario']);
+					$usuario->setNome($dados_usuario['nome']);
+					$usuario->setEmail($dados_usuario['email']);
+					$usuario->setSenha($dados_usuario['senha']);
+					$usuario->setEndereco($dados_usuario['endereco']);
+				}
+
+				return $usuario;
+
+			}
+			
+		}
+	
+
+	function atualizarUsuario($usuario,$id_novo){
 			$db = new Db();
 			$link = $db->conecta_mysql();
 			$sql = "UPDATE usuario SET nome = '".$usuario->getNome()."' 
 			, endereco = '".$usuario->getEndereco()."' 
 			, email = '".$usuario->getEmail()."' 
-			, senha =  '".$usuario->getSenha()."' 
+			, senha =  '".$usuario->getSenha()."'
+			, id_usuario =  '$id_novo' 
 			WHERE id_usuario = '".$usuario->getId()."' ";
 			if (mysqli_query($link,$sql)) {
-				echo 'Inserido com sucesso';
+				echo 'atualizado com sucesso';
+
 			}
 			else{
 				echo 'Erro no banco de dados';
 			}
 
 		}
+	
+		
+	function idExiste($id){
+		$db = new Db();
+		$link = $db->conecta_mysql();	
+		$sql = "SELECT * FROM usuario WHERE id_usuario = '$id'";
+		$resultado_busca = mysqli_query($link,$sql);
+
+		if($resultado_busca){
+			$dados_usuario = mysqli_fetch_array($resultado_busca,MYSQLI_ASSOC);
+			if($dados_usuario['id_usuario'] == $id){
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+	}
+
+
+
+		function inserirTelefone($link,$id_editora,$telefone){
+
+        $query_telefone = "INSERT INTO  telefone_editora(numero, id_editora)  values('$telefone','$id_editora')";
+
+        if(mysqli_query($link,$query_telefone)){
+            echo 'Telefone inserido com sucesso';
+        }
+        else{
+            echo 'erro ao adicionar telefone no banco de dados';
+        }
+
+    }
 
 	function atualizarFuncionario($funcionario){
 			$db = new Db();

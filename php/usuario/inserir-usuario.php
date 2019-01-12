@@ -4,6 +4,8 @@ require_once('../../classes/Aluno.class.php');
 require_once('../../classes/Professor.class.php');
 require_once('../../classes/Funcionario.class.php');
 require_once('../../classes/UsuarioDAO.class.php');
+$telefone = isset($_POST['telefone']) ? $_POST['telefone'] : null;
+
 $usuario = new Usuario();
 $usuario->setEmail($_POST['email']);
 $usuario->setNome($_POST['nome']);
@@ -11,8 +13,8 @@ $usuario->setSenha($_POST['senha']);
 $usuario->setEndereco($_POST['endereco']);
 
 $usuarioDAO = new UsuarioDAO();
-if($usuarioDAO->usuarioExiste($usuario->getEmail(), $usuario->getSenha()) == true){
-	$usuarioDAO->inserirUsuario($usuario);
+if($usuarioDAO->UsuarioExiste($usuario->getEmail(), $usuario->getSenha()) == true){
+	$usuarioDAO->inserirUsuario($usuario,$telefone);
 	$tipoConta = $_POST['tipoConta'];
 	if($tipoConta =="aluno"){
 		$aluno = new Aluno();
@@ -42,7 +44,7 @@ if($usuarioDAO->usuarioExiste($usuario->getEmail(), $usuario->getSenha()) == tru
 	}
 } else {
 	$tipoConta = $_POST['tipoConta'];
-	if($tipoConta =='aluno' and $usuarioDAO->existePerfilUsuario($usuario->getId(),$tipoConta)){
+	if($tipoConta =="aluno" /*and !$usuarioDAO->existePerfilUsuario($usuario->getId(),$tipoConta)*/){
 		$aluno = new Aluno();
 		$usuario = $usuarioDAO->getUsuario($usuario->getEmail(),$usuario->getSenha());
 		$aluno->setMatricula($_POST['matricula']);

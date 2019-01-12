@@ -40,6 +40,9 @@
     <script src="../js/editora.js">
 
     </script>
+    <script src="../js/igorescobar-jQuery-Mask-Plugin-2c1f36f/jquery.mask.js">
+
+    </script>
 
 
   </head>
@@ -89,7 +92,7 @@
             <form>
               <div class="form-group">
                   <label for="nome" id="labelnome"><strong>Nome</strong></label>
-                  <input type="text" class="form-control" id="nome" aria-describedby="nome" placeholder="exemplo">
+                  <input type="text" class="form-control" id="nome" aria-describedby="nome" placeholder="exemplo" max="40" >
               
               </div>
 

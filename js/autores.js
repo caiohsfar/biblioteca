@@ -2,15 +2,35 @@ $(document).ready(function(){
    clickCadastro();
    listarAutores();
    clickAddTelefone();
-   $('#telefone').mask('(99)99999-9999)');
+   $('#telefone').mask('(99)99999-9999');
   
 });
+function clickRemover(){
+    $('.btn-remover').click(function(){
+        var id_autor = $(this).data('id_autor');
+        $.ajax({
+            url: '../php/autor/remover_autor.php',
+            method: 'post',
+            data: {id_autor : id_autor},
+            success: function(data){
+                if (data){
+                    listarAutores();
+                }else{
+                    alert("Erro ao remover autor");
+                }
+                
+            }
+        });
+        
+    })
+}
 function listarAutores(){
     $.ajax({
         url: '../php/get_autores.php',
         success: function(data) {
             $('#lista-autores').html(data);
             clickDetalhes();
+            clickRemover();
         }
     });
 }
@@ -96,16 +116,7 @@ function limparCampos(){
 function clickDetalhes(){
     $('.btn-detalhes').click(function(){
         var id_autor = $(this).data('id_autor');
-        $.ajax({
-            url: '../php/autor/detalhes_autor.php',
-            method: 'post',
-            data: {id_autor : id_autor},
-            success: function(data){
-                
-                $('#detalhes_autor').html(data);
-                
-            }
-        });
+        requisitarDetalhes(id_autor);
         
         //window.location.href = '../php/autor/detalhes_autor.php?'+id_autor+'';
     })

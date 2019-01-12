@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`aluno` (
     FOREIGN KEY (`id_usuario`)
     REFERENCES `biblioteca`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`professor` (
     FOREIGN KEY (`id_usuario`)
     REFERENCES `biblioteca`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`funcionario` (
     FOREIGN KEY (`id_usuario`)
     REFERENCES `biblioteca`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`telefone_usuario` (
   CONSTRAINT `fk_telefone_usuario_usuario1`
     FOREIGN KEY (`id_usuario`)
     REFERENCES `biblioteca`.`usuario` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -337,9 +337,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 
 
-insert into aluno(id_usuario, matricula, curso) values ('1', '3123123', 'bsi');
 
-insert into professor(id_usuario, siape, lates) values ('1', '21323', 'ashuashuas');
 
 insert into area_conhecimento(nome, descricao) 
 values ('Ciências da saúde','Livros cujo temas principais são relacionados a saúde');

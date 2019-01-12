@@ -3,6 +3,7 @@ $(document).ready(function(){
             detalhesUsuario();
             editarUsuario();
             excluirPerfil();
+            clickAddTelefone();
         });
 	function nomeUsuario(){
 		$.ajax({
@@ -23,6 +24,7 @@ $(document).ready(function(){
                     data: {},
                     success: function(data){
                             $('#detalhes-usuario').html(data);
+                            clickRemoverTelefone();
                         
                 }
           });
@@ -41,6 +43,7 @@ $(document).ready(function(){
             var senha = -1;
             var siape = -1;
             var lates = -1;
+            var id_novo = -1;
             if( $('#nomeEdit').val().trim() !=""){
             	nome = $('#nomeEdit').val();
             	validacao = true;
@@ -70,18 +73,30 @@ $(document).ready(function(){
                 lates = $('#latesEdit').val();
                 validacao = true;
             }
+            if($('#editar_codigo').val().trim() !=""){
+                id_novo = $('#editar_codigo').val();
+                validacao = true;
+            }
 
 
             if(validacao){
             	$.ajax({
                     url: '../php/professor/editar-professor.php',
                     method: 'post',
-                    data: {nome:nome,email:email,siape:siape,lates:lates,senha:senha,endereco:endereco},
+                    data: {nome:nome,email:email,siape:siape,lates:lates,senha:senha,endereco:endereco,id_novo:id_novo},
                     success: function(data){
-                        detalhesUsuario();
-                        $('#alertSucessoEdit').show();
-                		}
+                        if (data == false){
+                            alert(data);
+                            alert("Já existe um usuário com esse código.")
+                        }else{
+                            detalhesUsuario();
+                            $('#alertSucessoEdit').show();
+                        }
+                    }
           		});
+            }
+            else{
+                alert("Preencha algum campo");
             }
             
 
@@ -102,4 +117,57 @@ $(document).ready(function(){
           });
                 
             });
+        }
+        function clickAddTelefone(){
+            $("#btn_conf_add_telefone_professor").click(function(){
+                if (validarCamposTelefone()){
+                    var telefone = $('#ip_add_telefone_professor').val();
+                    alert
+                    $.ajax({
+                        url: '../php/insert_telefone.php',
+                        method: 'post',
+                        data: {telefone : telefone},
+                        success: function(data){
+                            if (data){
+                                detalhesUsuario();
+                                alert("Telefone adicionado com sucesso");
+                                limparCamposTelefone();
+                            
+                            }else{
+                                alert("Erro ao dicionar telefone");
+                            }
+                            
+                        }
+                    });
+                }
+            });
+        }
+        function clickRemoverTelefone(){
+            $('.btn_rem_telefone_usuario').click(function(){
+                var id_telefone =  $(this).data('id_telefone_usuario');
+                $.ajax({
+                    url: '../php/remover_telefone_usuario.php',
+                    method: 'post',
+                    data: {id_telefone: id_telefone},
+                    success: function(data){
+                        if (data){
+                            detalhesUsuario();
+                        }else{
+                            alert("Erro ao remover telefone");
+                        }
+                        
+                    }
+                });
+            })
+         }
+        function limparCamposTelefone(){
+            $("#ip_add_telefone_professor").val("");
+        }
+        function validarCamposTelefone(){
+            var validacao = true;
+             if($('#ip_add_telefone_professor').val().trim() == ""){
+                 alert("Preencha o campo corretamente")
+                 validacao =  false;
+             }
+             return validacao;
         }

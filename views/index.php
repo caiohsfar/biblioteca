@@ -35,6 +35,9 @@
     <script src="../js/index.js">
 
     </script>
+    <script src="../js/igorescobar-jQuery-Mask-Plugin-2c1f36f/jquery.mask.js">
+
+    </script> 
 
 
   </head>
@@ -242,6 +245,13 @@
               <div class="alert alert-danger" role="alert" id="alertUsuarioExiste">
                 Já existe um <a href="#" class="alert-link">usuário</a> com esse email, logue e adicione outro tipo de  perfil a sua conta.
               </div>
+              <div class="form-group">
+                  <label for="telefone" id="label-telefone"><strong>Telefone</strong></label>
+                  <input class="form-control" id="telefone" aria-describedby="telefone" placeholder="(99) 99999-9999">
+                  <small id="telefone-autor" class="form-text text-muted">Você pode cadastrar mais telefones depois.</small>
+              </div>
+              
+              
 
               <div class="alert alert-success" role="alert" id="alertSucessoCadastro">
                 Usuário e perfil cadastrados com sucesso!!!
