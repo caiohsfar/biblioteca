@@ -113,10 +113,10 @@ class UsuarioDAO{
 		}
 	}
 
-	function inserirCargo($funcionario){
+	function inserirCargo($cargo){
 		$db = new Db();
 		$link = $db->conecta_mysql();	
-		$query = "INSERT INTO  cargo(id_cargo,nome,descricao)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
+		$query = "INSERT INTO  cargo(id_cargo,nome,descricao)  values(".$cargo->getIdCargo().",'".$cargo->getNome()."','".$cargo->getDescricao()."')";
 		if(mysqli_query($link,$query)){
 			return true;
 		}
@@ -125,10 +125,10 @@ class UsuarioDAO{
 		}
 	}
 
-	function inserirFuncionarioCargo($funcionario){
+	function inserirFuncionarioCargo($funcionarioCargo,$funcionario){
 		$db = new Db();
 		$link = $db->conecta_mysql();	
-		$query = "INSERT INTO  funcionario_cargo(id_cargo,id_usuario,data)  values(".$funcionario->getIdUsuario().",'".$funcionario->getSiape()."')";
+		$query = "INSERT INTO  funcionario_cargo(id_cargo,id_usuario,data)  values(".$funcionarioCargo->getIdCargo().",'".$funcionario->getIdUsuario()."','".$funcionarioCargo->getData()."')";
 		if(mysqli_query($link,$query)){
 			return true;
 		}

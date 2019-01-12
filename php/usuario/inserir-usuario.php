@@ -97,7 +97,7 @@ if($usuarioDAO->UsuarioExiste($usuario->getEmail(), $usuario->getSenha()) == tru
 
 
 		}
-		if($usuarioDAO->inserirFuncionario($funcionario) and $usuarioDAO->inserirCargo($f) and $usuarioDAO->inserirFuncionarioCargo($)){
+		if($usuarioDAO->inserirFuncionario($funcionario) and $usuarioDAO->inserirCargo($cargo) and $usuarioDAO->inserirFuncionarioCargo($funcionarioCargo,$funcionario)){
 			return true;
 		} else {
 			return false;
