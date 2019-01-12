@@ -38,6 +38,10 @@
 	echo '<br/>';
 	echo ($usuario->getId());
 	echo '<br/>';
+	echo '<strong class="margem-linha-modal">Telefones</strong>';
+	echo '<span> <button id="btn_add_telefone_usuario" data-id_usuario"'.$usuario->getId().'" data-toggle="modal" data-target="#add_telefone_modal_professor" class="btn btn-link btn-detalhes" >Adicionar</button></span>';
+	echo '<ul id="lista_telefones" class="list-group">';
+	$usuario->getTelefones($usuario->getId());
 
 
 ?>

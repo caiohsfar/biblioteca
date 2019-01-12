@@ -2,7 +2,7 @@ $(document).ready(function(){
     clickCadastro();
     listarEditoras();
     clickAddTelefone();
-    $('#telefone').mask('(99)99999-9999)');
+    $('#telefone').mask('(99)99999-9999');
    
  });
  function listarEditoras(){
@@ -11,8 +11,28 @@ $(document).ready(function(){
         success: function(data) {
             $('#lista-editoras').html(data);
             clickDetalhes();
+            clickRemover();
         }
     });
+}
+function clickRemover(){
+    $('.btn-remover').click(function(){
+        var id_editora = $(this).data('id_editora');
+        $.ajax({
+            url: '../php/editora/remover_editora.php',
+            method: 'post',
+            data: {id_editora : id_editora},
+            success: function(data){
+                if (data){
+                    listarEditoras();
+                }else{
+                    alert("Erro ao remover editora");
+                }
+                
+            }
+        });
+        
+    })
 }
 function clickAddTelefone(){
     $("#btn_conf_add_telefone_editora").click(function(){

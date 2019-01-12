@@ -30,9 +30,18 @@
 	if($_POST['curso']!= -1){
 		$aluno->setCurso($_POST['curso']);
 	}
+	if($_POST['id_novo']!= -1){
+		$id_novo = $_POST['id_novo'];
+	}
 
-	$usuarioDAO->atualizarUsuario($usuario);
-	$usuarioDAO->atualizarAluno($aluno);
-	$_SESSION['usuario'] = serialize($usuario);
-	$_SESSION['aluno'] = serialize($aluno);
+	if (!$usuarioDAO->idExiste($id_novo)){
+		$usuarioDAO->atualizarUsuario($usuario,$id_novo);
+		$usuarioDAO->atualizarAluno($aluno);
+		$_SESSION['usuario'] = serialize($usuarioDAO->getUsuarioById($id_novo));
+		$_SESSION['aluno'] = serialize($aluno);
+		echo "atualizado com sucesso.";
+	}else{
+		return false;
+	}
+	
 ?>

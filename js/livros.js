@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $('#isbn').mask('999999999-9');
+    $('#edicao').mask('99');
+    $('#volume').mask('99');
     carregarSelects();
     clickCadastrar();
    

@@ -37,8 +37,12 @@
 
     
     <script src="../js/aluno.js">
+  
 
     </script>
+    <script src="../js/igorescobar-jQuery-Mask-Plugin-2c1f36f/jquery.mask.js">
+
+    </script> 
 
 
   </head>
@@ -160,6 +164,10 @@
                 <label for="senha"><strong>Senha</strong></label>
                 <input type="password" class="form-control" id="senhaEdit" required="O campo senha percisa ser preenchido." placeholder="Senha">
               </div>
+              <div class="form-group">
+                <label for="editar_codigo"><strong>Código de usuário</strong></label>
+                <input type="number" class="form-control" id="editar_codigo" required="O campo senha percisa ser preenchido." placeholder="99">
+              </div>
 
               <div class="alert alert-success" role="alert" id="alertSucessoEdit">
                Editado com sucesso!!!
@@ -187,6 +195,35 @@
       </div>
     </div>
   </section>
+  <div class="row">
+        <!-- Modal de add telefone -->
+
+        <div class="col-md-2">
+                <!-- Modal -->
+                <div class="modal fade" id="add_telefone_modal_aluno" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar telefone</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="ip_add_telefone_aluno" id="label-add-telefone"><strong>Telefone</strong></label>
+                            <input class="form-control" id="ip_add_telefone_aluno" aria-describedby="telefone" placeholder="(99) 99999-9999">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                          <button id="btn_conf_add_telefone_aluno" type="submit" class="btn btn-success">Adicionar</button>
+                        </div>
+
+                    </div>
+                </div>
+      </div>
     
   </body>
 </html> 

@@ -31,8 +31,17 @@
 		$professor->setLates($_POST['lates']);
 	}
 
-	$usuarioDAO->atualizarUsuario($usuario);
-	$usuarioDAO->atualizarProfessor($professor);
-	$_SESSION['usuario'] = serialize($usuario);
-	$_SESSION['professor'] = serialize($professor);
+	if($_POST['id_novo']!= -1){
+		$id_novo = $_POST['id_novo'];
+	}
+	
+	if (!$usuarioDAO->idExiste($id_novo)){
+		$usuarioDAO->atualizarUsuario($usuario,$id_novo);
+		$usuarioDAO->atualizarProfessor($professor);
+		$_SESSION['usuario'] = serialize($usuarioDAO->getUsuarioById($id_novo));
+		$_SESSION['professor'] = serialize($professor);
+		echo "atualizado com sucesso.";
+	}else{
+		return false;
+	}
 ?>

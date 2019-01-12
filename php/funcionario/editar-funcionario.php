@@ -26,9 +26,17 @@
 	if($_POST['siape']!= -1){
 		$funcionario->setSiape($_POST['siape']);
 	}
+	if($_POST['id_novo']!= -1){
+		$id_novo = $_POST['id_novo'];
+	}
 
-	$usuarioDAO->atualizarUsuario($usuario);
-	$usuarioDAO->atualizarFuncionario($funcionario);
-	$_SESSION['usuario'] = serialize($usuario);
-	$_SESSION['funcionario'] = serialize($funcionario);
+	if (!$usuarioDAO->idExiste($id_novo)){
+		$usuarioDAO->atualizarUsuario($usuario,$id_novo);
+		$usuarioDAO->atualizarFuncionario($funcionario);
+		$_SESSION['usuario'] = serialize($usuarioDAO->getUsuarioById($id_novo));
+		$_SESSION['funcionario'] = serialize($funcionario);
+		echo "atualizado com sucesso.";
+	}else{
+		return false;
+	}
 ?>

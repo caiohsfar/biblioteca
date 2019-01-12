@@ -1,4 +1,5 @@
 $(document).ready(function(){
+            $('#telefone').mask('(99)99999-9999');
             mostrarCampoRadio();
             clickLogin();
             cadastrarUsuario();
@@ -13,7 +14,7 @@ $(document).ready(function(){
                     method: 'post',
                     data: {numero : numero},
                     success: function(data){
-                        alert(data);
+                        
                 
                 }
           });
@@ -124,6 +125,7 @@ function esconderAlertas(){
                 var email = $('#emailCadastro').val();
                 var endereco = $('#enderecoCadastro').val();
                 var senha = $('#senhaCadastro').val();
+                var telefone = $('#telefone').val();
                 var siape = 0;
                 var matricula = 0;
                 var curso = 0;
@@ -155,15 +157,15 @@ function esconderAlertas(){
                 $.ajax({
                     url: '../php/usuario/inserir-usuario.php',
                     method: 'post',
-                    data: {nome:nome, email:email, endereco: endereco, senha:senha,siape:siape, matricula:matricula, curso:curso, tipoConta:tipoConta,lates:lates},
+                    data: {nome:nome, email:email, endereco: endereco, senha:senha,siape:siape, matricula:matricula, curso:curso, tipoConta:tipoConta,lates:lates, telefone:telefone},
                     success: function(data){
                             if(data==false){
                                 esconderAlertas();
-                                alert(data);
+                                
                                 $('#alertUsuarioExiste').show();
                             }
                             else{
-                                alert(data);
+                                
                                 esconderAlertas();
                                 $('#alertSucessoCadastro').show();
                             }
@@ -245,6 +247,10 @@ function esconderAlertas(){
                 });
 
     }
+
+    
+    
+    
 
    
 
