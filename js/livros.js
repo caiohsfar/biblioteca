@@ -4,6 +4,8 @@ $(document).ready(function(){
     $('#volume').mask('99');
     carregarSelects();
     clickCadastrar();
+    listar();
+    listarEmprestados();
    
 });
 
@@ -166,4 +168,57 @@ function esconderAlertas(){
 
 
 
+}
+function emprestarLivro(){
+            $('.emprestar').click(function(){
+                if($('#pega').val() ==''){
+                    alert('Preencha todos os campos de data.');
+            return false;
+          }
+           if($('#devolve').val() ==''){
+            alert('Preencha todos os campos de data.');
+            return false;
+          }
+                var pega = $('#pega').val();
+                var devolve = $('#devolve').val();
+                var id = $(this).data('id_aluno');
+               $.ajax({
+                    url: '../php/emprestarLivro.php',
+                    method: 'post',
+                    data: {id:id,pega:pega,devolve:devolve},
+                    success: function(data){
+                        listarEmprestados();
+                
+                }
+          });
+                
+            });
+        }
+
+
+function listar() {
+    $.ajax({
+        url: '../php/listarLivros.php',
+        method: 'post',
+        data: {},
+        success: function(data){
+            $('#listarLivros').html(data);
+            emprestarLivro();
+
+                
+        }
+    });
+}
+
+function listarEmprestados() {
+    $.ajax({
+        url: '../php/listarEmprestados.php',
+        method: 'post',
+        data: {},
+        success: function(data){
+            $('#LivrosEmprestados').html(data);
+
+                
+        }
+    });
 }

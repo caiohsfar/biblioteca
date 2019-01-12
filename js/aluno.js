@@ -3,6 +3,7 @@ $(document).ready(function(){
             detalhesUsuario();
             editarUsuario();
             excluirPerfil();
+            listar();
             clickAddTelefone();
             $('#ip_add_telefone_aluno').mask('(99)99999-9999');
             
@@ -19,6 +20,17 @@ $(document).ready(function(){
                 }
           });
 	}
+    function listar() {
+    $.ajax({
+        url: '../php/listarLivros.php',
+        method: 'post',
+        data: {},
+        success: function(data){
+            $('#listarLivros').html(data);
+                
+        }
+    });
+}
 
 	function detalhesUsuario(){
 		$.ajax({

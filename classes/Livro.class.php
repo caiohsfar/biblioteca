@@ -14,7 +14,6 @@
 		private $volume;
         private $idAreaConhecimento;
 
-
 		/**
 		 * Get the value of nome
 		 */ 
@@ -41,7 +40,7 @@
                 return $this->isbn;
         }
 
-        /**
+        /**s
          * Set the value of isbn
          *
          * @return  self

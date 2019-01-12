@@ -4,6 +4,7 @@ $(document).ready(function(){
             editarUsuario();
             excluirPerfil();
             clickAddTelefone();
+            listar();
         });
 	function nomeUsuario(){
 		$.ajax({
@@ -15,7 +16,20 @@ $(document).ready(function(){
                         
                 }
           });
-	}
+	}  
+
+    function listar() {
+    $.ajax({
+        url: '../php/listarLivros.php',
+        method: 'post',
+        data: {},
+        success: function(data){
+            $('#listarLivros').html(data);
+            emprestarLivro();
+                
+        }
+    });
+}
 
 	function detalhesUsuario(){
 		$.ajax({
@@ -161,3 +175,19 @@ $(document).ready(function(){
          }
          return validacao;
     }
+
+        function emprestarLivro(){
+            $('.emprestar').click(function(){
+                var id_aluno = $(this).data('id_aluno');
+               $.ajax({
+                    url: '../php/emprestarLivro',
+                    method: 'post',
+                    data: {id_aluno:id_aluno},
+                    success: function(data){
+                        window.location.href = '../views/index.php';
+                
+                }
+          });
+                
+            });
+        }

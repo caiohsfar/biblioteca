@@ -80,11 +80,52 @@
 
       </div>
   </nav>
+
+
+
   <section class="container">
     <div class="margem-navbar">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-livro" onclick="esconderAlertas()">
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-livro" onclick="esconderAlertas()">
         Cadastrar livro
     </button>
+      </div>
+
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+      <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Data de emprestimo a ser agendado</label>
+            <input id="pega" type="date" class="form-control" id="data-inicio">
+            <small class="form-text text-muted"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Data de devolução</label>
+            <input id="devolve" type="date" class="form-control" id="data-inicio">
+            <small class="form-text text-muted"></small>
+          </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"><h4 style="color: blue;margin-top: 60px;">Livros disponíveis</h4></div>
+      <div class="col-md-4"></div>
+    </div>
+    <div id="listarLivros" style="margin-top: 50px;"></div>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"><h4 style="color: blue;margin-top: 60px;">Livros emprestados a mim</h4></div>
+      <div class="col-md-4"></div>
+    </div>
+    <div id="LivrosEmprestados" style="margin-top: 50px;"></div>
+
+
 
     <div class="modal fade" id="modal-livro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">

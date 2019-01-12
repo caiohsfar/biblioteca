@@ -188,12 +188,6 @@
 
     </div>
 
-    <div class="row" style="margin-top: 150px;">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <h1>Seja bem vindo a nossa biblioteca!</h1>
-      </div>
-    </div>
   </section>
   <div class="row">
         <!-- Modal de add telefone -->

@@ -237,6 +237,20 @@ class UsuarioDAO{
 	}
 
 
+
+		function inserirTelefone($link,$id_editora,$telefone){
+
+        $query_telefone = "INSERT INTO  telefone_editora(numero, id_editora)  values('$telefone','$id_editora')";
+
+        if(mysqli_query($link,$query_telefone)){
+            echo 'Telefone inserido com sucesso';
+        }
+        else{
+            echo 'erro ao adicionar telefone no banco de dados';
+        }
+
+    }
+
 	function atualizarFuncionario($funcionario){
 			$db = new Db();
 			$link = $db->conecta_mysql();

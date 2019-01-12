@@ -44,7 +44,7 @@ if($usuarioDAO->UsuarioExiste($usuario->getEmail(), $usuario->getSenha()) == tru
 	}
 } else {
 	$tipoConta = $_POST['tipoConta'];
-	if($tipoConta =='aluno' and $usuarioDAO->existePerfilUsuario($usuario->getId(),$tipoConta)){
+	if($tipoConta =="aluno" /*and !$usuarioDAO->existePerfilUsuario($usuario->getId(),$tipoConta)*/){
 		$aluno = new Aluno();
 		$usuario = $usuarioDAO->getUsuario($usuario->getEmail(),$usuario->getSenha());
 		$aluno->setMatricula($_POST['matricula']);
